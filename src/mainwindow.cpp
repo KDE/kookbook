@@ -63,8 +63,8 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         connect(fspane.get(), &FsPane::fileSelected, m_activeDocument.get(), [this](const QString& path) {
             m_activeDocument->openPath(path);
         });
-        fspane->setRootPath("/home/sune/recipes/");
-        m_scanner->setRootPath("/home/sune/recipes/");
+        fspane->setRootPath(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/recipes/");
+        m_scanner->setRootPath(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/recipes/");
         auto fsdock = mkdock("Recipes");
         m_fsPane = fspane.get();
         fsdock->setWidget(fspane.release());
