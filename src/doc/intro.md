@@ -41,55 +41,58 @@ The full recipe is rendered as markdown, and some specific pieces of information
 All in all, 3 groups of data are read. Title, Ingredients and Metadata, and are read in that order.
 
 Title is the first top level header, like 
-```text
-# Fancy salad
-```
+
+    # Fancy salad
 is parsed as "Fancy salad" as the title.
 
 The parser is supposed to ignore anything until reaching a line starting with 
-```text
-### Ingred
-```
+
+    ### Ingred
 and at this point switch to ingredients parsing. More on that later. Ingredients parsing stops at a line starting with 
-```text
-### Direc
-```
+
+    ### Direc
 and ignores any lines until a line starting with 
-```text
-### Meta
-```
+
+    ### Meta
 The meta section is a set of lines with specific syntax:
-```text
-key: value
-```
+
+    key: value
 More on meta data parsing later.
 
 
 #### Ingredients parsing
 
 Ingredients lines for parsing needs to be structured as a bullet list like
-```text
- * amount unit ingredient name, some additional information
-```
+
+     * amount unit ingredient name, some additional information
+
 and is parsed by ignoring the asterisk, the first two words, and whatever is after a comma.
 
-in
-```text
- * 1 kg flour
- * 2 pcs red bell pepper, alternatively yellow bell pepper
-```
+An ingredient list like
+
+     * 1 kg flour
+     * 2 pcs red bell pepper, alternatively yellow bell pepper
+
 will get the parsed ingredient list for indexing and other purposes as
-```text
-flour
-red bell pepper
-```
+
+    flour
+    red bell pepper
+
+
+Ingredients without an amount, e.g.
+
+     * salt
+     * pepper
+
+Will not show up in ingredient indexing.
+
 
 #### Metadata parsing
 
 so far, only tags as key is parsed specifically as comma separated list like
-```text
-tags: kid friendly, vegetarian
-```
+
+    tags: kid friendly, vegetarian
+
 is parsed into the tags
  * kid friendly
  * vegetarian
