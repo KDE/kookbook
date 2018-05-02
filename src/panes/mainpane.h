@@ -26,10 +26,7 @@
 #include "panebase.h"
 #include <memory>
 
-namespace KParts
-{
-    class ReadOnlyPart;
-}
+class QTextDocument;
 
 class MainPane : public PaneBase
 {
@@ -40,5 +37,5 @@ public:
 public Q_SLOTS:
     void openPath(const QString& path) override;
 private:
-    KParts::ReadOnlyPart* m_viewPart;
+    std::unique_ptr<QTextDocument> m_document;
 };

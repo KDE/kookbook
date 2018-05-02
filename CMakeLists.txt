@@ -1,13 +1,13 @@
 project(kookbook)
 cmake_minimum_required(VERSION 3.7)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/modules)
+
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(KF5Parts NO_MODULE)
-find_package(KF5Service)
-find_package(KF5Parts)
 find_package(Qt5 COMPONENTS Widgets)
+find_package(Discount REQUIRED)
 
 set(CMAKE_AUTOMOC on)
 set(CMAKE_AUTORCC on)

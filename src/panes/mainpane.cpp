@@ -23,33 +23,60 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 #include "mainpane.h"
-#include <KMimeTypeTrader>
-#include <KParts/ReadOnlyPart>
-#include <KParts/ReadWritePart>
 #include <QHBoxLayout>
 #include <memory>
-#include <QFileInfo>
+#include <QFile>
+#include <QTextEdit>
+#include <QTextDocument>
+
+extern "C"
+{
+#include <mkdio.h>
+}
 
 MainPane::MainPane(QWidget* parent) : PaneBase(parent)
 {
-    m_viewPart = KMimeTypeTrader::createPartInstanceFromQuery<KParts::ReadOnlyPart>("text/markdown", this, this);
-    Q_ASSERT(m_viewPart);
-    
+    m_document = std::make_unique<QTextDocument>();
     auto layout = std::make_unique<QHBoxLayout>();
+    auto textView = std::make_unique<QTextEdit>();
+    textView->setReadOnly(true);
+    textView->setDocument(m_document.get());
     
-    layout->addWidget(m_viewPart->widget());
+    layout->addWidget(textView.release());
     setLayout(layout.release());
     openPath(QString());
 }
 
 void MainPane::openPath(const QString& path)
 {
-    QFileInfo fi(path);
-    if (!path.isEmpty() && fi.exists() && fi.isFile()) {
-        m_viewPart->openUrl(QUrl::fromLocalFile(path));
+    QByteArray data;
+    if(QFile::exists(path)) {
+        QFile f(path);
+        bool success = f.open(QIODevice::ReadOnly);
+        if(!success) {
+            return;
+        }
+        data = f.readAll();
     } else {
-        m_viewPart->openUrl(QUrl::fromLocalFile(":/docs/intro.md"));
+        QFile f(":/docs/intro.md");
+        f.open(QIODevice::ReadOnly);
+        data = f.readAll();
     }
+
+    MMIOT* handle = mkd_string(data,data.size(), 0);
+
+    int success = mkd_compile(handle, 0);
+    if (!success ) {
+        return;
+    }
+
+    char* html;
+    int length = mkd_document(handle, &html);
+
+    m_document->setHtml(QString::fromUtf8(html,length));
+
+    mkd_cleanup(handle);
+
 }
 
 MainPane::~MainPane()
