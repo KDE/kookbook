@@ -86,7 +86,7 @@ RecipeParser::ParsedRecipe RecipeParser::parseRecipe(QIODevice* input)
                     result.tags.push_back(tag.trimmed());
                 }
             } else {
-                result.otherMeta[key]=value;
+                result.otherMeta[key].push_back(value);
             }
         }
     }

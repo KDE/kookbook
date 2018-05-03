@@ -58,6 +58,7 @@ The meta section is a set of lines with specific syntax:
 
     key: value
 More on meta data parsing later.
+A key can be repeated and is concatenated.
 
 
 #### Ingredients parsing
@@ -96,6 +97,12 @@ so far, only tags as key is parsed specifically as comma separated list like
 is parsed into the tags
  * kid friendly
  * vegetarian
+
+An author tag can only contain one value, but it can be repeated.
+
+    author: John Doe
+    author: Jane Doe
+
 
 Other tags with specific parsing rules might come in the future
 

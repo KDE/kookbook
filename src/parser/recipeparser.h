@@ -36,7 +36,7 @@ namespace RecipeParser
         QString title;
         QVector<IngredientsExtractor::Ingredient> ingredients;
         QVector<QString> tags;
-        QMap<QString,QString> otherMeta; // we want them ordered
+        QMap<QString,QVector<QString>> otherMeta; // we want them ordered
     };
     ParsedRecipe parseRecipe(QIODevice* input);
 };

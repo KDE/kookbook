@@ -75,7 +75,11 @@ void MetaDataPane::openPath(const QString& path)
     auto meta = std::make_unique<QStandardItem>(QString("meta (%1)").arg(parsedRecipe.otherMeta.size()));
     for(auto it = parsedRecipe.otherMeta.constBegin(), end = parsedRecipe.otherMeta.constEnd(); it != end; it++) {
         auto child = std::make_unique<QStandardItem>(it.key());
-        child->appendRow(new QStandardItem(it.value()));
+        const auto values = it.value();
+        for(const auto& value : values)
+        {
+            child->appendRow(new QStandardItem(value));
+        }
         meta->appendRow(child.release());
     }
     m_model->appendRow(meta.release());
