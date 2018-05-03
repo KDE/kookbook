@@ -45,6 +45,8 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 {
     m_activeDocument = std::make_unique<ActiveDocument>();
     m_scanner = std::make_unique<Scanner>();
+    QDockWidget* fsdockptr = nullptr; // we need a handle to be able to tabify with it later.
+    QVector<QDockWidget*> developerDocks; // want to hide them at the end.
     {
         auto mainpane = std::make_unique<MainPane>();
         m_activeDocument->registerListener(mainpane.get());
@@ -55,6 +57,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         auto rawviewpane = std::make_unique<RawViewPane>();
         m_activeDocument->registerListener(rawviewpane.get());
         auto rawviewdock = mkdock("Raw view");
+        developerDocks << rawviewdock.get();
         rawviewdock->setWidget(rawviewpane.release());
         addDockWidget(Qt::RightDockWidgetArea, rawviewdock.release());
     }
@@ -68,6 +71,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         auto fsdock = mkdock("Recipes");
         m_fsPane = fspane.get();
         fsdock->setWidget(fspane.release());
+        fsdockptr = fsdock.get();
         addDockWidget(Qt::LeftDockWidgetArea, fsdock.release());
         
     }
@@ -76,6 +80,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         m_activeDocument->registerListener(metadatapane.get());
         auto metadatadock = mkdock("Metadata");
         metadatadock->setWidget(metadatapane.release());
+        developerDocks << metadatadock.get();
         addDockWidget(Qt::LeftDockWidgetArea, metadatadock.release());
     }
     {
@@ -109,29 +114,35 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         });
         
         {
-            auto tagsdock = mkdock("Tags");
-            tagsdock->setWidget(tagspane.release());
-            addDockWidget(Qt::BottomDockWidgetArea,tagsdock.release());
-        }
-        
-        {
-            auto ingredientsdock = mkdock("Ingredients");
-            ingredientsdock->setWidget(ingredientspane.release());
-            addDockWidget(Qt::BottomDockWidgetArea,ingredientsdock.release());
-        }
-        
-        {
             auto titlesdock = mkdock("Title");
             titlesdock->setWidget(titlelist.release());
-            addDockWidget(Qt::BottomDockWidgetArea,titlesdock.release());
+            auto titlesdockptr = titlesdock.get();
+            addDockWidget(Qt::LeftDockWidgetArea,titlesdock.release());
+            tabifyDockWidget(titlesdockptr, fsdockptr);
         }
+        {
+            auto tagsdock = mkdock("Tags");
+            tagsdock->setWidget(tagspane.release());
+            auto tagsdockptr = tagsdock.get();
+            addDockWidget(Qt::LeftDockWidgetArea,tagsdock.release());
+            auto ingredientsdock = mkdock("Ingredients");
+            auto ingredientsdockptr = ingredientsdock.get();
+            ingredientsdock->setWidget(ingredientspane.release());
+            addDockWidget(Qt::LeftDockWidgetArea,ingredientsdock.release());
+            tabifyDockWidget(ingredientsdockptr,tagsdockptr);
+        }
+        
+    }
+    for(auto dock : qAsConst(developerDocks)) {
+        dock->hide();
     }
     auto toolbar = std::make_unique<QToolBar>("Main Toolbar");
-    toolbar->addAction(QIcon::fromTheme("document-open-folder"),"open",this, &MainWindow::openFolder);
-    toolbar->addAction(QIcon::fromTheme("edit-entry"),"edit current", this, &MainWindow::editActiveRecipe);
-    toolbar->addAction(QIcon::fromTheme("view-refresh"),"reload", m_scanner.get(), &Scanner::doUpdate);
-    toolbar->addAction(QIcon::fromTheme("document-print"),"print", m_mainPane, &MainPane::print);
-    toolbar->addAction(QIcon::fromTheme("document-print-preview"),"print preview", m_mainPane, &MainPane::printPreview);
+    toolbar->addAction(QIcon::fromTheme("document-open-folder"),"Open collection",this, &MainWindow::openFolder);
+    toolbar->addAction(QIcon::fromTheme("view-refresh"),"Reload collection", m_scanner.get(), &Scanner::doUpdate);
+    toolbar->addSeparator();
+    toolbar->addAction(QIcon::fromTheme("edit-entry"),"Edit current recipe", this, &MainWindow::editActiveRecipe);
+    toolbar->addAction(QIcon::fromTheme("document-print"),"Print current recipe", m_mainPane, &MainPane::print);
+    toolbar->addAction(QIcon::fromTheme("document-print-preview"),"Print preview current recipe", m_mainPane, &MainPane::printPreview);
     addToolBar(Qt::TopToolBarArea, toolbar.release());
 }
 
