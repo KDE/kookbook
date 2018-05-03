@@ -48,7 +48,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     {
         auto mainpane = std::make_unique<MainPane>();
         m_activeDocument->registerListener(mainpane.get());
-    
+        m_mainPane = mainpane.get();
         setCentralWidget(mainpane.release());
     }
     {
@@ -130,6 +130,8 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     toolbar->addAction(QIcon::fromTheme("document-open-folder"),"open",this, &MainWindow::openFolder);
     toolbar->addAction(QIcon::fromTheme("edit-entry"),"edit current", this, &MainWindow::editActiveRecipe);
     toolbar->addAction(QIcon::fromTheme("view-refresh"),"reload", m_scanner.get(), &Scanner::doUpdate);
+    toolbar->addAction(QIcon::fromTheme("document-print"),"print", m_mainPane, &MainPane::print);
+    toolbar->addAction(QIcon::fromTheme("document-print-preview"),"print preview", m_mainPane, &MainPane::printPreview);
     addToolBar(Qt::TopToolBarArea, toolbar.release());
 }
 

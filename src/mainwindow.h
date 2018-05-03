@@ -29,6 +29,7 @@
 
 class ActiveDocument;
 class FsPane;
+class MainPane;
 class Scanner;
 
 class MainWindow : public QMainWindow
@@ -45,5 +46,6 @@ private Q_SLOTS:
 private:
     std::unique_ptr<ActiveDocument> m_activeDocument;
     FsPane* m_fsPane;
+    MainPane* m_mainPane;
     std::unique_ptr<Scanner> m_scanner;
 };

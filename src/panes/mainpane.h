@@ -36,6 +36,8 @@ public:
     ~MainPane();
 public Q_SLOTS:
     void openPath(const QString& path) override;
+    void print();
+    void printPreview();
 private:
     std::unique_ptr<QTextDocument> m_document;
 };

@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(Qt5 COMPONENTS Widgets)
+find_package(Qt5 COMPONENTS Widgets PrintSupport)
 find_package(Discount REQUIRED)
 
 set(CMAKE_AUTOMOC on)

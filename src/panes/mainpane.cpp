@@ -28,6 +28,9 @@
 #include <QFile>
 #include <QTextEdit>
 #include <QTextDocument>
+#include <QPrintDialog>
+#include <QPrintPreviewDialog>
+#include <QPrinter>
 
 extern "C"
 {
@@ -77,6 +80,24 @@ void MainPane::openPath(const QString& path)
 
     mkd_cleanup(handle);
 
+}
+
+void MainPane::print()
+{
+    QPrintDialog d;
+    if (d.exec() == QDialog::Accepted)
+    {
+        m_document->print(d.printer());
+    }
+}
+
+void MainPane::printPreview()
+{
+    QPrintPreviewDialog d;
+    connect(&d, &QPrintPreviewDialog::paintRequested, this, [this](QPrinter* printer) {
+        m_document->print(printer);
+    });
+    d.exec();
 }
 
 MainPane::~MainPane()
