@@ -31,15 +31,33 @@ class QAbstractProxyModel;
 class QTreeView;
 class FileNameTitleMapper;
 
+/**
+ * Pane for file system tree.
+ */
 class FsPane : public QWidget
 {
     Q_OBJECT
 public:
     FsPane(QWidget* parent = nullptr);
     ~FsPane();
+    /**
+     * Sets the root path for the file system pane to start from.
+     *
+     * \param string the root path
+     */
     void setRootPath(const QString& string);
+    /**
+     * Provides a mapping from file path to title inside the file.
+     *
+     * Note: This causes model reset.
+     *
+     * \param titlemap map of file path -> title
+     */
     void setFileNameTitleMap(QHash<QString,QString> titlemap);
 Q_SIGNALS:
+    /**
+     * Emitted whenever a path is selected in this pane
+     */
     void fileSelected(const QString& path);
 private:
     std::unique_ptr<QFileSystemModel> m_dirModel;

@@ -28,7 +28,9 @@
 
 class QStandardItemModel;
 
-
+/**
+ * Simple pane for showing the metadata parsed from a recipe
+ */
 class MetaDataPane: public PaneBase
 {
     Q_OBJECT

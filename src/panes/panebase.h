@@ -26,6 +26,9 @@
 #include <QWidget>
 #include "activedocumentlistener.h"
 
+/**
+ * Base class for panes that can accept panes.
+ */
 class PaneBase : public QWidget, public ActiveDocumentListener
 {
     Q_OBJECT

@@ -29,14 +29,30 @@
 
 class QIODevice;
 
+/**
+ * Extract information from a recipe. See format documentation for details.
+ */
 namespace RecipeParser
 {
+    /**
+     * A parsed recipe with metadata extracted
+     */
     struct ParsedRecipe
     {
+        /** The recipe title*/
         QString title;
+        /** A list of ingredients */
         QVector<IngredientsExtractor::Ingredient> ingredients;
+        /** The tags extracted from the metadata*/
         QVector<QString> tags;
+        /** Less formalized bits of metadata. At a more formal point, it might
+         deserve to be treated like tags */
         QMap<QString,QVector<QString>> otherMeta; // we want them ordered
     };
+    /**
+     * Parses a recipe
+     * \param input open QIODevice to read the recipe from
+     * \return Parsed Recipe.
+     */
     ParsedRecipe parseRecipe(QIODevice* input);
 };

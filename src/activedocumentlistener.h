@@ -28,6 +28,11 @@ class QString;
 class ActiveDocumentListener
 {
 public:
+    /**
+     * Opens and renders the given path.
+     *
+     * \param path The path to open
+     */
     virtual void openPath(const QString& path ) = 0;
 protected:
     ~ActiveDocumentListener() {};

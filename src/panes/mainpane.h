@@ -28,6 +28,9 @@
 
 class QTextDocument;
 
+/**
+ * The main view for rendering the recipes.
+ */
 class MainPane : public PaneBase
 {
     Q_OBJECT
@@ -36,7 +39,13 @@ public:
     ~MainPane();
 public Q_SLOTS:
     void openPath(const QString& path) override;
+    /**
+     * Starts printing the viewed document
+     */
     void print();
+    /**
+     * Starts print preview (and printing)
+     */
     void printPreview();
 private:
     std::unique_ptr<QTextDocument> m_document;

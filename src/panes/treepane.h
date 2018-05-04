@@ -28,14 +28,26 @@
 
 class QTreeView;
 class QAbstractItemModel;
+/**
+ * Generic pane wrapping a QTreeView
+ */
 class TreePane : public QWidget
 {
     Q_OBJECT
 public:
     TreePane(QWidget* parent = nullptr);
+    /**
+     * Sets the model to the given object.
+     * \param model The model
+     */
     void setModel(const std::shared_ptr<QAbstractItemModel>& model);
     ~TreePane();
 Q_SIGNALS:
+    /**
+     * Emitted when a file is selected in this pane.
+     *
+     * \param path The selected file
+     */
     void fileSelected(const QString& path);
 private:
     std::shared_ptr<QAbstractItemModel> m_model;

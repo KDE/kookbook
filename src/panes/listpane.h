@@ -29,16 +29,32 @@
 class QListView;
 class QAbstractItemModel;
 class QSortFilterProxyModel;
+
+/**
+ * General pane for filtered lists. Technically wraps a QListView
+ */
 class ListPane : public QWidget
 {
     Q_OBJECT
 public:
     ListPane(QWidget* parent = nullptr);
+    /**
+     * Sets the model for the list view
+     * \param model The model
+     */
     void setModel(const std::shared_ptr<QAbstractItemModel>& model);
     ~ListPane();
 Q_SIGNALS:
+    /**
+     * Emitted when a file is selected
+     * \param path The selected path
+     */
     void fileSelected(const QString& path);
 private Q_SLOTS:
+    /**
+     * The string to filter on
+     * \param filter The filter string
+     */
     void setFilterString(const QString& filter);
 private:
     std::shared_ptr<QAbstractItemModel> m_model;

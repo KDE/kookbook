@@ -30,6 +30,12 @@
 class QFileSystemWatcher;
 class ActiveDocumentListener;
 
+/**
+ * Broker for handling opening a document and
+ * informing components interested in the active document.
+ *
+ * Does also cause a reload whenever the file changes.
+ */
 class ActiveDocument : public QObject
 {
     Q_OBJECT
@@ -38,7 +44,7 @@ public:
     ~ActiveDocument();
     void registerListener(ActiveDocumentListener* pane);
     QString currentPath() const;
-    
+
 public Q_SLOTS:
     void openPath(const QString& file);
 private:

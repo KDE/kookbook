@@ -28,6 +28,9 @@
 
 class QTextBrowser;
 
+/**
+ * Provides a raw view of the document (rather than a rendered one)
+ */
 class RawViewPane : public PaneBase
 {
     Q_OBJECT
@@ -36,5 +39,5 @@ public:
 public Q_SLOTS:
     void openPath(const QString& path) override;
 private:
-    QTextBrowser* m_rawView; 
+    QTextBrowser* m_rawView;
 };

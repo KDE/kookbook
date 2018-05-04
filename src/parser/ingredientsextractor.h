@@ -27,11 +27,20 @@
 
 namespace IngredientsExtractor
 {
+    /**
+     * Ingredient descriptor
+     */
     struct Ingredient
     {
+        /** The amount of whatever*/
         QString amount;
+        /** The unit this ingredient is measured in for this amount */
         QString unit;
+        /**The ingredient name.*/
         QString ingredient;
     };
+    /**
+     * Extracts ingredients information from a line. See the format documentation for specifics on parsing a line.
+     */
     Ingredient parseLine(const QString& line);
 }

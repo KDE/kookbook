@@ -32,6 +32,9 @@ class FsPane;
 class MainPane;
 class Scanner;
 
+/**
+ *Main window
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -39,9 +42,12 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 Q_SIGNALS:
+    /** private signal to help whenever pane clearing (Usually following open folder) is needed*/
     void clear(QPrivateSignal = QPrivateSignal{});
 private Q_SLOTS:
+    /** When open folder is invoked*/
     void openFolder();
+    /** When edit recipe is invoked */
     void editActiveRecipe();
 private:
     std::unique_ptr<ActiveDocument> m_activeDocument;

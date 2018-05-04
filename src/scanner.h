@@ -31,21 +31,51 @@
 #include <QHash>
 
 class QAbstractItemModel;
+/**
+ * File system scanner to index the recipes in the recipe collection.
+ *
+ * As a implementation detail, a worker thread is used for
+ * the file system access and parsing and stuff.
+ */
 class Scanner : public QObject
 {
     Q_OBJECT
 public:
     Scanner(QObject* parent = nullptr);
+    /**
+     * \return tree model of parsed tags
+     */
     std::shared_ptr<QAbstractItemModel> parsedTags() const;
+    /**
+     * \return tree model of parsed ingredients
+     */
     std::shared_ptr<QAbstractItemModel> parsedIngredients() const;
+    /**
+     * \return list model of parsed title
+     */
     std::shared_ptr<QAbstractItemModel> parsedTitleList() const;
+    /**
+     * \return map from file path to recipe title
+     */
     QHash<QString,QString> parsedFileNameTitleMap() const;
+    /**
+     * Sets the (new) root path and triggers a re-indexing of everything.
+     */
     void setRootPath(const QString& path);
     ~Scanner();
 public Q_SLOTS:
+    /**
+     * Re-indexes with current root path
+     */
     void doUpdate();
 Q_SIGNALS:
+    /**
+     * Emitted update is done (and new models and maps and such can be read)
+     */
     void dataUpdated();
+    /**
+     * \internal - thread switching for dataUpdated.
+     */
     void dataUpdatedInternal(QPrivateSignal p = QPrivateSignal());
 private:
     mutable std::mutex m_mutex;
@@ -53,6 +83,11 @@ private:
     std::shared_ptr<QAbstractItemModel> m_parsedIngredients;
     std::shared_ptr<QAbstractItemModel> m_titleList;
     QHash<QString,QString> m_parsedFileNameTitleMap;
+    /**
+     * Function to be run in a different thread.
+     * \param path Root path to start indexing from
+     * \param targetThread The QThread to move created QObjects to (main thread) before switching back.
+     */
     void parseThingsInDifferentThread(const QString& path, QThread* targetThread);
     QString m_rootPath;
     std::atomic_bool m_running;
