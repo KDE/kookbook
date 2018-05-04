@@ -38,6 +38,7 @@
 #include <QFileDialog>
 #include "treepane.h"
 #include "listpane.h"
+#include "ingredientsparserpane.h"
 
 auto mkdock(const QString& title) { return std::make_unique<QDockWidget>(title);}
 
@@ -73,7 +74,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         fsdock->setWidget(fspane.release());
         fsdockptr = fsdock.get();
         addDockWidget(Qt::LeftDockWidgetArea, fsdock.release());
-        
+
     }
     {
         auto metadatapane = std::make_unique<MetaDataPane>();
@@ -82,6 +83,13 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         metadatadock->setWidget(metadatapane.release());
         developerDocks << metadatadock.get();
         addDockWidget(Qt::LeftDockWidgetArea, metadatadock.release());
+    }
+    {
+        auto ingredientsparserpane = std::make_unique<IngredientsParserPane>();
+        auto ingredientsparserdock = mkdock("Ingredients line");
+        ingredientsparserdock->setWidget(ingredientsparserpane.release());
+        developerDocks << ingredientsparserdock.get();
+        addDockWidget(Qt::RightDockWidgetArea, ingredientsparserdock.release());
     }
     {
         auto ingredientspane = std::make_unique<TreePane>();
@@ -99,7 +107,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         connect(titlelist.get(), &ListPane::fileSelected, m_activeDocument.get(), [this](const QString& path) {
             m_activeDocument->openPath(path);
         });
-        
+
         connect(m_scanner.get(), &Scanner::dataUpdated, this, [rawingredientspane,rawtagspane,rawtitlelist,this]() {
             rawingredientspane->setModel(m_scanner->parsedIngredients());
             rawtagspane->setModel(m_scanner->parsedTags());
@@ -112,7 +120,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
             rawtitlelist->setModel(nullptr);
             m_fsPane->setFileNameTitleMap({});
         });
-        
+
         {
             auto titlesdock = mkdock("Title");
             titlesdock->setWidget(titlelist.release());
@@ -131,7 +139,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
             addDockWidget(Qt::LeftDockWidgetArea,ingredientsdock.release());
             tabifyDockWidget(ingredientsdockptr,tagsdockptr);
         }
-        
+
     }
     for(auto dock : qAsConst(developerDocks)) {
         dock->hide();
@@ -163,7 +171,7 @@ void MainWindow::openFolder()
         return;
     }
     clear();
-    
+
     m_activeDocument->openPath(QString());
     m_fsPane->setRootPath(folder);
     m_scanner->setRootPath(folder);
