@@ -1,6 +1,11 @@
 # KookBook
 
-A simple recipe manager taking structured markdown for recipes. A cookbook, or collection of recipes, is a folder structure containing one or more recipes.
+A simple recipe manager taking structured markdown for recipes.
+
+## A cookbook
+
+A cookbook, or collection of recipes, is a folder structure containing one or more recipes with markdown files and named *.recipe.md. The folder structure can be used as one way to browse and group the recipes.
+See the file format section for details on the file format.
 
 Recipes can be synced with others using external tools like git repositories, nextcloud or many other services.
 
