@@ -40,10 +40,18 @@ RawViewPane::RawViewPane(QWidget* parent) : PaneBase(parent)
 
 void RawViewPane::openPath(const QString& path)
 {
-    QFile f(path);
-    bool isOpen = f.open(QIODevice::ReadOnly);
-    if (isOpen) {
-        QString content = QString::fromUtf8(f.readAll());
-        m_rawView->setPlainText(content);
+    if (QFile::exists(path))
+    {
+        QFile f(path);
+        bool isOpen = f.open(QIODevice::ReadOnly);
+        if (isOpen) {
+            QString content = QString::fromUtf8(f.readAll());
+            m_rawView->setPlainText(content);
+        }
     }
+    else
+    {
+        m_rawView->setPlainText(QString());
+    }
+
 }
