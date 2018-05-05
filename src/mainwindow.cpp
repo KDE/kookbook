@@ -36,11 +36,33 @@
 #include "activedocument.h"
 #include "scanner.h"
 #include <QFileDialog>
+#include <QProcess>
 #include "treepane.h"
 #include "listpane.h"
 #include "ingredientsparserpane.h"
 
 auto mkdock(const QString& title) { return std::make_unique<QDockWidget>(title);}
+
+// QDesktopServices::openUrl just gives whatever is available to open it
+// in the markdown case, it is quite likely to be a viewer, so just try to
+// find some random editors, and if none of them are found
+// go for QDesktopServices::openUrl and hope the best
+static void openFile(const QString& file)
+{
+    QStringList exes = {"kwrite", "kate", "gedit", "notepad++", "atom", "gvim"};
+    QString foundExe;
+    for(const auto& exe : qAsConst(exes)) {
+        foundExe = QStandardPaths::findExecutable(exe);
+        if (!foundExe.isEmpty()) {
+            break;
+        }
+    }
+    if (!foundExe.isEmpty()) {
+        QProcess::startDetached(foundExe, QStringList() << file);
+    } else {
+        QDesktopServices::openUrl(QUrl::fromLocalFile(file));
+    }
+}
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 {
@@ -161,7 +183,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::editActiveRecipe()
 {
-    QDesktopServices::openUrl(QUrl::fromLocalFile(m_activeDocument->currentPath()));
+    openFile(m_activeDocument->currentPath());
 }
 
 void MainWindow::openFolder()
@@ -185,7 +207,7 @@ void MainWindow::newRecipe()
         QFile::setPermissions(file,QFileDevice::WriteOwner | QFile::permissions(file));
     }
     m_activeDocument->openPath(file);
-    QDesktopServices::openUrl(QUrl::fromLocalFile(file));
+    openFile(file);
 }
 
 void MainWindow::setCurrentFolder(const QString& folder)
