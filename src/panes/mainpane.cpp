@@ -26,7 +26,7 @@
 #include <QHBoxLayout>
 #include <memory>
 #include <QFile>
-#include <QTextEdit>
+#include <QTextBrowser>
 #include <QTextDocument>
 #include <QPrintDialog>
 #include <QPrintPreviewDialog>
@@ -41,10 +41,11 @@ MainPane::MainPane(QWidget* parent) : PaneBase(parent)
 {
     m_document = std::make_unique<QTextDocument>();
     auto layout = std::make_unique<QHBoxLayout>();
-    auto textView = std::make_unique<QTextEdit>();
+    auto textView = std::make_unique<QTextBrowser>();
     textView->setReadOnly(true);
     textView->setDocument(m_document.get());
-    
+    textView->setOpenExternalLinks(true);
+
     layout->addWidget(textView.release());
     setLayout(layout.release());
     openPath(QString());
