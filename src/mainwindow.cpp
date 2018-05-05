@@ -40,6 +40,7 @@
 #include "treepane.h"
 #include "listpane.h"
 #include "ingredientsparserpane.h"
+#include <QStatusBar>
 
 auto mkdock(const QString& title) { return std::make_unique<QDockWidget>(title);}
 
@@ -75,6 +76,9 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         m_activeDocument->registerListener(mainpane.get());
         m_mainPane = mainpane.get();
         setCentralWidget(mainpane.release());
+        connect(m_mainPane, &MainPane::notifySimple, statusBar(), [this] (const QString& message) {
+            statusBar()->showMessage(message, 5000);
+        });
     }
     {
         auto rawviewpane = std::make_unique<RawViewPane>();
@@ -174,6 +178,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     toolbar->addAction(QIcon::fromTheme("document-print-preview"),"Print preview current recipe", m_mainPane, &MainPane::printPreview);
     addToolBar(Qt::TopToolBarArea, toolbar.release());
     setCurrentFolder(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/recipes/");
+    statusBar()->show();
 }
 
 MainWindow::~MainWindow()
@@ -190,6 +195,7 @@ void MainWindow::openFolder()
 {
     QString folder = QFileDialog::getExistingDirectory(this,"Open Folder",QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
     if (folder.isEmpty()) {
+        statusBar()->showMessage("Cancelled", 2000);
         return;
     }
     setCurrentFolder(folder);
@@ -200,6 +206,7 @@ void MainWindow::newRecipe()
 {
     QString file = QFileDialog::getSaveFileName(this, "Create Recipe", m_currentFolder, "Recipes (*.recipe.md)");
     if (!file.endsWith(".recipe.md")) {
+        statusBar()->showMessage("Cancelled", 2000);
         return;
     }
     if (!QFile::exists(file)) {

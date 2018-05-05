@@ -45,6 +45,7 @@ MainPane::MainPane(QWidget* parent) : PaneBase(parent)
     textView->setReadOnly(true);
     textView->setDocument(m_document.get());
     textView->setOpenExternalLinks(true);
+    connect(textView.get(), QOverload<const QString&>::of(&QTextBrowser::highlighted), this, &MainPane::notifySimple);
 
     layout->addWidget(textView.release());
     setLayout(layout.release());

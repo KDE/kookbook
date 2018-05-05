@@ -37,6 +37,12 @@ class MainPane : public PaneBase
 public:
     MainPane(QWidget* parent = nullptr) ;
     ~MainPane();
+Q_SIGNALS:
+    /**
+     * Requests a simple notification
+     * \param msg The message to notify
+     */
+    void notifySimple(const QString& msg);
 public Q_SLOTS:
     void openPath(const QString& path) override;
     /**
