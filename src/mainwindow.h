@@ -49,9 +49,14 @@ private Q_SLOTS:
     void openFolder();
     /** When edit recipe is invoked */
     void editActiveRecipe();
+    /** creates a recipe and edits */
+    void newRecipe();
 private:
+    /** Sets the current folder (and notifies whoever needs it) */
+    void setCurrentFolder(const QString& folder);
     std::unique_ptr<ActiveDocument> m_activeDocument;
     FsPane* m_fsPane;
     MainPane* m_mainPane;
     std::unique_ptr<Scanner> m_scanner;
+    QString m_currentFolder;
 };

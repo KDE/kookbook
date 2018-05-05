@@ -67,8 +67,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         connect(fspane.get(), &FsPane::fileSelected, m_activeDocument.get(), [this](const QString& path) {
             m_activeDocument->openPath(path);
         });
-        fspane->setRootPath(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/recipes/");
-        m_scanner->setRootPath(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/recipes/");
         auto fsdock = mkdock("Recipes");
         m_fsPane = fspane.get();
         fsdock->setWidget(fspane.release());
@@ -148,10 +146,12 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     toolbar->addAction(QIcon::fromTheme("document-open-folder"),"Open collection",this, &MainWindow::openFolder);
     toolbar->addAction(QIcon::fromTheme("view-refresh"),"Reload collection", m_scanner.get(), &Scanner::doUpdate);
     toolbar->addSeparator();
+    toolbar->addAction(QIcon::fromTheme("document-new"), "New recipe", this, &MainWindow::newRecipe);
     toolbar->addAction(QIcon::fromTheme("edit-entry"),"Edit current recipe", this, &MainWindow::editActiveRecipe);
     toolbar->addAction(QIcon::fromTheme("document-print"),"Print current recipe", m_mainPane, &MainPane::print);
     toolbar->addAction(QIcon::fromTheme("document-print-preview"),"Print preview current recipe", m_mainPane, &MainPane::printPreview);
     addToolBar(Qt::TopToolBarArea, toolbar.release());
+    setCurrentFolder(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/recipes/");
 }
 
 MainWindow::~MainWindow()
@@ -170,10 +170,31 @@ void MainWindow::openFolder()
     if (folder.isEmpty()) {
         return;
     }
-    clear();
+    setCurrentFolder(folder);
 
+}
+
+void MainWindow::newRecipe()
+{
+    QString file = QFileDialog::getSaveFileName(this, "Create Recipe", m_currentFolder, "Recipes (*.recipe.md)");
+    if (!file.endsWith(".recipe.md")) {
+        return;
+    }
+    if (!QFile::exists(file)) {
+        QFile::copy(":/docs/template.md", file);
+        QFile::setPermissions(file,QFileDevice::WriteOwner | QFile::permissions(file));
+    }
+    m_activeDocument->openPath(file);
+    QDesktopServices::openUrl(QUrl::fromLocalFile(file));
+}
+
+void MainWindow::setCurrentFolder(const QString& folder)
+{
+    m_currentFolder = folder;
+
+    clear();
     m_activeDocument->openPath(QString());
     m_fsPane->setRootPath(folder);
     m_scanner->setRootPath(folder);
-}
 
+}
