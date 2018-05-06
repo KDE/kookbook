@@ -41,12 +41,12 @@ void IngredientsExtractorTest::testThings()
 {
     QFETCH(QString, input);
     QFETCH(IngredientsExtractor::Ingredient, result);
-    
+
     auto parsedResult = IngredientsExtractor::parseLine(input);
     QCOMPARE(parsedResult.amount,result.amount);
     QCOMPARE(parsedResult.unit,result.unit);
     QCOMPARE(parsedResult.ingredient,result.ingredient);
-    
+
 }
 
 
@@ -54,12 +54,13 @@ void IngredientsExtractorTest::testThings_data()
 {
     QTest::addColumn<QString>("input");
     QTest::addColumn<IngredientsExtractor::Ingredient>("result");
-    
+
     QTest::newRow("simple") << " * 1.5 kg mel" << IngredientsExtractor::Ingredient{"1.5","kg","mel"};
     QTest::newRow("simple almost") << "* 1.5 kg mel" << IngredientsExtractor::Ingredient{"1.5","kg","mel"};
     QTest::newRow("simple extra spaces") << "* 1.5  kg   mel" << IngredientsExtractor::Ingredient{"1.5","kg","mel"};
     QTest::newRow("half baked") << "* 1.5 kg " << IngredientsExtractor::Ingredient{};
     QTest::newRow("with comment") << " * 1.5 kg mel, alternativt grahamsmel" << IngredientsExtractor::Ingredient{"1.5","kg","mel"};
+    QTest::newRow("with comment, no parsable ingredient") << " * mel, alternativt grahamsmel" << IngredientsExtractor::Ingredient{};
     QTest::newRow("just comment") << " , foo" << IngredientsExtractor::Ingredient{};
     QTest::newRow("empty") << QString() << IngredientsExtractor::Ingredient{};
     QTest::newRow("almost empty") << " * " << IngredientsExtractor::Ingredient{};

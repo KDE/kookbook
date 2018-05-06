@@ -28,8 +28,8 @@
 
 IngredientsExtractor::Ingredient IngredientsExtractor::parseLine(const QString& line)
 {
-    QRegularExpression regexp(" *\\* +([^ ]+) +([^ ]+) +([^,]+)");
-    
+    QRegularExpression regexp(" *\\* +([^ ,]+) +([^ ,]+) +([^,]+)");
+
     auto match = regexp.match(line);
     if (!match.hasMatch())
     {
@@ -39,6 +39,6 @@ IngredientsExtractor::Ingredient IngredientsExtractor::parseLine(const QString& 
     {
         return {};
     }
-    
+
     return {match.captured(1).trimmed(),match.captured(2).trimmed(), match.captured(3).trimmed()};
 }
