@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kookbook
+GenericName=Recipe manager
+Comment=Simple recipe collection handling application
+Exec=kookbook
+Icon=wine
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Utility;Viewer;TextTools;ArtQt;
