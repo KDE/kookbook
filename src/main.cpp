@@ -22,13 +22,25 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-#include <QApplication>
 #include "mainwindow.h"
+#include <QApplication>
+#include <QResource>
+#include <QFile>
+#include <QStandardPaths>
+
 
 int main(int argc, char** argv)
 {
     QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts,true); // we load QtWE
     QApplication app(argc, argv);
+
+    QString themeFilePath = QStandardPaths::locate(QStandardPaths::AppDataLocation, QLatin1String("icons/breeze/breeze-icons.rcc"));
+    if (QFile::exists(themeFilePath)) {
+        bool ok = QResource::registerResource(themeFilePath, "/icons/breeze");
+        if (ok) {
+            QIcon::setThemeName("breeze");
+        }
+    }
 
     app.setWindowIcon(QIcon(":/appicon.svg"));
     app.setApplicationDisplayName("Kookbook");
