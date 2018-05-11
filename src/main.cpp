@@ -30,6 +30,10 @@ int main(int argc, char** argv)
     QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts,true); // we load QtWE
     QApplication app(argc, argv);
 
+    app.setWindowIcon(QIcon(":/appicon.svg"));
+    app.setApplicationDisplayName("Kookbook");
+    app.setApplicationName("Kookbook");
+
     MainWindow mw;
 
     mw.show();

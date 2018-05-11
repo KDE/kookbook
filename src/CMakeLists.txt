@@ -14,7 +14,7 @@ set(KOOKBOOK_ICONS_SVG
 ${CMAKE_CURRENT_SOURCE_DIR}/icons/sc-apps-kookbook.svgz
 )
 
-set(KOOKBOOK_SRCS main.cpp mainwindow.cpp activedocument.cpp scanner.cpp doc/docs.qrc)
+set(KOOKBOOK_SRCS main.cpp mainwindow.cpp activedocument.cpp scanner.cpp doc/docs.qrc icons/icons.qrc)
 
 ecm_add_app_icon(KOOKBOOK_SRCS ICONS ${KOOKBOOK_ICONS_PNG})
 
