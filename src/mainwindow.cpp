@@ -117,28 +117,25 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     }
     {
         auto ingredientspane = std::make_unique<TreePane>();
-        TreePane* rawingredientspane = ingredientspane.get();
         connect(ingredientspane.get(), &TreePane::fileSelected, m_activeDocument.get(), [this](const QString& path) {
             m_activeDocument->openPath(path);
         });
         auto tagspane = std::make_unique<TreePane>();
-        TreePane* rawtagspane = tagspane.get();
         connect(tagspane.get(), &TreePane::fileSelected, m_activeDocument.get(), [this](const QString& path) {
             m_activeDocument->openPath(path);
         });
         auto titlelist = std::make_unique<ListPane>();
-        ListPane* rawtitlelist = titlelist.get();
         connect(titlelist.get(), &ListPane::fileSelected, m_activeDocument.get(), [this](const QString& path) {
             m_activeDocument->openPath(path);
         });
 
-        connect(m_scanner.get(), &Scanner::dataUpdated, this, [rawingredientspane,rawtagspane,rawtitlelist,this]() {
+        connect(m_scanner.get(), &Scanner::dataUpdated, this, [rawingredientspane = ingredientspane.get(),rawtagspane = tagspane.get(),rawtitlelist = titlelist.get(),this]() {
             rawingredientspane->setModel(m_scanner->parsedIngredients());
             rawtagspane->setModel(m_scanner->parsedTags());
             rawtitlelist->setModel(m_scanner->parsedTitleList());
             m_fsPane->setFileNameTitleMap(m_scanner->parsedFileNameTitleMap());
         });
-        connect(this, &MainWindow::clear, this, [rawingredientspane,rawtagspane, rawtitlelist,this]() {
+        connect(this, &MainWindow::clear, this, [rawingredientspane = ingredientspane.get(), rawtagspane = tagspane.get(), rawtitlelist = titlelist.get(),this]() {
             rawingredientspane->setModel(nullptr);
             rawtagspane->setModel(nullptr);
             rawtitlelist->setModel(nullptr);
