@@ -20,6 +20,8 @@ ecm_add_app_icon(KOOKBOOK_SRCS ICONS ${KOOKBOOK_ICONS_PNG})
 
 add_subdirectory(parser)
 add_subdirectory(panes)
+
+set(CMAKE_WIN32_EXECUTABLE on)
 add_executable(kookbook ${KOOKBOOK_SRCS})
 
 target_link_libraries(kookbook PRIVATE panes parser ${CMAKE_THREAD_LIBS_INIT})
