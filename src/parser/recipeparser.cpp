@@ -36,7 +36,7 @@ RecipeParser::ParsedRecipe RecipeParser::parseRecipe(QIODevice* input)
     if (!input->isReadable()) {
         return {};
     }
-    
+
     RecipeParser::ParsedRecipe result;
     while (!input->atEnd()) {
         // read until title
@@ -46,7 +46,7 @@ RecipeParser::ParsedRecipe RecipeParser::parseRecipe(QIODevice* input)
             break;
         }
     }
-    
+
     while (!input->atEnd()) {
         // scroll thru introduction
         QByteArray line = input->readLine(2000);
@@ -54,7 +54,7 @@ RecipeParser::ParsedRecipe RecipeParser::parseRecipe(QIODevice* input)
             break;
         }
     }
-    
+
     while (!input->atEnd()) {
         QByteArray line = input->readLine(2000);
         if (line.startsWith("### Direc")) {
@@ -65,7 +65,7 @@ RecipeParser::ParsedRecipe RecipeParser::parseRecipe(QIODevice* input)
             result.ingredients.push_back(std::move(ingredient));
         }
     }
-    
+
     while (!input->atEnd()) {
         // scroll thru directions
         QByteArray line = input->readLine(2000);
@@ -73,23 +73,26 @@ RecipeParser::ParsedRecipe RecipeParser::parseRecipe(QIODevice* input)
             break;
         }
     }
-    
+
     while (!input->atEnd()) {
         QByteArray line = input->readLine(2000);
         int sep = line.indexOf(':');
         if (sep != -1) {
             QString key = QString::fromUtf8(line.left(sep)).trimmed();
             QString value = QString::fromUtf8(line.mid(sep+1)).trimmed();
-            if (key == QLatin1String("tags")) {
-                QStringList tags = value.split(',');
-                for(QString tag : qAsConst(tags)) {
-                    result.tags.push_back(tag.trimmed());
+            if (!value.isEmpty())
+            {
+                if (key == QLatin1String("tags")) {
+                    QStringList tags = value.split(',',QString::SkipEmptyParts);
+                    for(QString tag : qAsConst(tags)) {
+                        result.tags.push_back(tag.trimmed());
+                    }
+                } else {
+                    result.otherMeta[key].push_back(value);
                 }
-            } else {
-                result.otherMeta[key].push_back(value);
             }
         }
     }
-    
+
     return result;
 }
