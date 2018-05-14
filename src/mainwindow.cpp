@@ -166,12 +166,27 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         dock->hide();
     }
     auto toolbar = std::make_unique<QToolBar>("Main Toolbar");
-    toolbar->addAction(QIcon::fromTheme("document-open-folder"),"Open collection",this, &MainWindow::openFolder);
-    toolbar->addAction(QIcon::fromTheme("view-refresh"),"Reload collection", m_scanner.get(), &Scanner::doUpdate);
+    {
+        auto action = toolbar->addAction(QIcon::fromTheme("document-open-folder"),"Open collection",this, &MainWindow::openFolder);
+        action->setShortcut(QKeySequence(QKeySequence::Open));
+    }
+    {
+        auto action = toolbar->addAction(QIcon::fromTheme("view-refresh"),"Reload collection", m_scanner.get(), &Scanner::doUpdate);
+        action->setShortcut(QKeySequence(QKeySequence::Refresh));
+    }
     toolbar->addSeparator();
-    toolbar->addAction(QIcon::fromTheme("document-new"), "New recipe", this, &MainWindow::newRecipe);
-    toolbar->addAction(QIcon::fromTheme("edit-entry"),"Edit current recipe", this, &MainWindow::editActiveRecipe);
-    toolbar->addAction(QIcon::fromTheme("document-print"),"Print current recipe", m_mainPane, &MainPane::print);
+    {
+        auto action = toolbar->addAction(QIcon::fromTheme("document-new"), "New recipe", this, &MainWindow::newRecipe);
+        action->setShortcut(QKeySequence(QKeySequence::New));
+    }
+    {
+        auto action = toolbar->addAction(QIcon::fromTheme("edit-entry"),"Edit current recipe", this, &MainWindow::editActiveRecipe);
+        action->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_E));
+    }
+    {
+        auto action = toolbar->addAction(QIcon::fromTheme("document-print"),"Print current recipe", m_mainPane, &MainPane::print);
+        action->setShortcut(QKeySequence(QKeySequence::Print));
+    }
     toolbar->addAction(QIcon::fromTheme("document-print-preview"),"Print preview current recipe", m_mainPane, &MainPane::printPreview);
     addToolBar(Qt::TopToolBarArea, toolbar.release());
     setCurrentFolder(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/recipes/");
