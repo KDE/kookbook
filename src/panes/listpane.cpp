@@ -33,14 +33,15 @@
 ListPane::ListPane(QWidget* parent) : QWidget(parent){
     m_view = new QListView(this);
     m_filter = std::make_unique<QSortFilterProxyModel>();
+    m_filter->setFilterCaseSensitivity(Qt::CaseInsensitive);
     setLayout(new QVBoxLayout());
-    
+
     auto edit = std::make_unique<QLineEdit>();
     edit->setPlaceholderText("Search");
     auto action = edit->addAction(QIcon::fromTheme("edit-clear"),QLineEdit::TrailingPosition);
     connect(action, &QAction::triggered, edit.get(), &QLineEdit::clear);
     connect(edit.get(), &QLineEdit::textChanged, this, &ListPane::setFilterString);
-    
+
     layout()->addWidget(edit.release());
     layout()->addWidget(m_view);
     connect(m_view,&QListView::clicked, this, [this](const QModelIndex& idx) {
