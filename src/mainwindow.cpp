@@ -41,6 +41,7 @@
 #include "listpane.h"
 #include "ingredientsparserpane.h"
 #include <QStatusBar>
+#include <QSettings>
 
 auto mkdock(const QString& title) { return std::make_unique<QDockWidget>(title);}
 
@@ -189,13 +190,20 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     }
     toolbar->addAction(QIcon::fromTheme("document-print-preview"),"Print preview current recipe", m_mainPane, &MainPane::printPreview);
     addToolBar(Qt::TopToolBarArea, toolbar.release());
-    setCurrentFolder(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/recipes/");
+    QSettings s;
+    s.beginGroup("General");
+    setCurrentFolder(s.value("location", QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/recipes/").toString());
     statusBar()->show();
 }
 
 MainWindow::~MainWindow()
 {
-    //for smart pointers
+    QSettings s;
+    s.beginGroup("General");
+    if (QFile::exists(m_currentFolder)) {
+        s.setValue("location", m_currentFolder);
+    }
+    s.sync();
 }
 
 void MainWindow::editActiveRecipe()

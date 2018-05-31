@@ -44,6 +44,8 @@ int main(int argc, char** argv)
 
     app.setWindowIcon(QIcon(":/appicon.svg"));
     app.setApplicationDisplayName("Kookbook");
+    app.setOrganizationName("kde.org");
+    app.setOrganizationDomain("kde.org");
     app.setApplicationName("Kookbook");
 
     MainWindow mw;
