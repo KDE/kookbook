@@ -70,7 +70,7 @@ FsPane::FsPane(QWidget* parent) : QWidget(parent)
     auto tree = std::make_unique<QTreeView>();
     m_dirModel = std::make_unique<QFileSystemModel>();
     m_dirModel->setNameFilters(QStringList() << QStringLiteral("*.recipe.md"));
-    auto path = m_dirModel->setRootPath("/home/sune/recipes/");
+    m_dirModel->setNameFilterDisables(false);
     
     m_filenamemapper = std::make_unique<FileNameTitleMapper>();
     m_filenamemapper->setSourceModel(m_dirModel.get());
@@ -102,10 +102,17 @@ FsPane::~FsPane()
 void FsPane::setRootPath(const QString& string)
 {
     auto path = m_dirModel->setRootPath(string);
+
     path = m_filenamemapper->mapFromSource(path);
     path = m_proxy->mapFromSource(path);
-    m_tree->setRootIndex(path);
-    m_rootPath = string;
+    if (path.isValid()) {
+        m_tree->setModel(m_proxy.get());
+        m_tree->setRootIndex(path);
+        m_rootPath = string;
+    } else {
+        m_tree->setModel(nullptr);
+        m_rootPath = QString();
+    }
 }
 
 void FsPane::setFileNameTitleMap(QHash<QString, QString> titlemap)
