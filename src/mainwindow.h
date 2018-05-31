@@ -51,6 +51,8 @@ private Q_SLOTS:
     void editActiveRecipe();
     /** creates a recipe and edits */
     void newRecipe();
+    /** writes message to the status bar (for a short interval)*/
+    void notifyStatusBar(const QString& message);
 private:
     /** Sets the current folder (and notifies whoever needs it) */
     void setCurrentFolder(const QString& folder);

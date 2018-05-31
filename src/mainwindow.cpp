@@ -42,6 +42,7 @@
 #include "ingredientsparserpane.h"
 #include <QStatusBar>
 #include <QSettings>
+#include <QAbstractItemModel>
 
 auto mkdock(const QString& title) { return std::make_unique<QDockWidget>(title);}
 
@@ -77,9 +78,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         m_activeDocument->registerListener(mainpane.get());
         m_mainPane = mainpane.get();
         setCentralWidget(mainpane.release());
-        connect(m_mainPane, &MainPane::notifySimple, statusBar(), [this] (const QString& message) {
-            statusBar()->showMessage(message, 5000);
-        });
+        connect(m_mainPane, &MainPane::notifySimple, this, &MainWindow::notifyStatusBar);
     }
     {
         auto rawviewpane = std::make_unique<RawViewPane>();
@@ -133,7 +132,9 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         connect(m_scanner.get(), &Scanner::dataUpdated, this, [rawingredientspane = ingredientspane.get(),rawtagspane = tagspane.get(),rawtitlelist = titlelist.get(),this]() {
             rawingredientspane->setModel(m_scanner->parsedIngredients());
             rawtagspane->setModel(m_scanner->parsedTags());
-            rawtitlelist->setModel(m_scanner->parsedTitleList());
+            auto titlelist = m_scanner->parsedTitleList();
+            rawtitlelist->setModel(titlelist);
+            notifyStatusBar(QString("Found %1 recipes").arg(titlelist->rowCount()));
             m_fsPane->setFileNameTitleMap(m_scanner->parsedFileNameTitleMap());
         });
         connect(this, &MainWindow::clear, this, [rawingredientspane = ingredientspane.get(), rawtagspane = tagspane.get(), rawtitlelist = titlelist.get(),this]() {
@@ -215,7 +216,7 @@ void MainWindow::openFolder()
 {
     QString folder = QFileDialog::getExistingDirectory(this,"Open Folder",QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
     if (folder.isEmpty()) {
-        statusBar()->showMessage("Cancelled", 2000);
+        notifyStatusBar("Cancelled");
         return;
     }
     setCurrentFolder(folder);
@@ -226,7 +227,7 @@ void MainWindow::newRecipe()
 {
     QString file = QFileDialog::getSaveFileName(this, "Create Recipe", m_currentFolder, "Recipes (*.recipe.md)");
     if (!file.endsWith(".recipe.md")) {
-        statusBar()->showMessage("Cancelled", 2000);
+        notifyStatusBar("Cancelled");
         return;
     }
     if (!QFile::exists(file)) {
@@ -237,6 +238,12 @@ void MainWindow::newRecipe()
     openFile(file);
 }
 
+void MainWindow::notifyStatusBar(const QString& message)
+{
+    statusBar()->showMessage(message, 5000);
+}
+
+
 void MainWindow::setCurrentFolder(const QString& folder)
 {
     m_currentFolder = folder;
@@ -244,6 +251,7 @@ void MainWindow::setCurrentFolder(const QString& folder)
     clear();
     m_activeDocument->openPath(QString());
     m_fsPane->setRootPath(folder);
+    notifyStatusBar(QString("Parsing %1").arg(folder));
     m_scanner->setRootPath(folder);
 
 }
