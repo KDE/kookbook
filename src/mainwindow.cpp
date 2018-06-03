@@ -209,7 +209,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::editActiveRecipe()
 {
-    openFile(m_activeDocument->currentPath());
+    auto path = m_activeDocument->currentPath();
+    if (QFile::exists(path)) {
+        openFile(path);
+    }
 }
 
 void MainWindow::openFolder()
