@@ -44,7 +44,11 @@
 #include <QSettings>
 #include <QAbstractItemModel>
 
-auto mkdock(const QString& title) { return std::make_unique<QDockWidget>(title);}
+auto mkdock(const QString& title) {
+    auto dock = std::make_unique<QDockWidget>(title);
+    dock->setObjectName(title);
+    return std::move(dock);
+}
 
 // QDesktopServices::openUrl just gives whatever is available to open it
 // in the markdown case, it is quite likely to be a viewer, so just try to
@@ -168,6 +172,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         dock->hide();
     }
     auto toolbar = std::make_unique<QToolBar>("Main Toolbar");
+    toolbar->setObjectName("Main Toolbar");
     {
         auto action = toolbar->addAction(QIcon::fromTheme("document-open-folder"),"Open collection",this, &MainWindow::openFolder);
         action->setShortcut(QKeySequence(QKeySequence::Open));
@@ -194,6 +199,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     QSettings s;
     s.beginGroup("General");
     setCurrentFolder(s.value("location", QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/recipes/").toString());
+    restoreState(s.value("windowState", QByteArray()).toByteArray());
     statusBar()->show();
 }
 
@@ -204,6 +210,7 @@ MainWindow::~MainWindow()
     if (QFile::exists(m_currentFolder)) {
         s.setValue("location", m_currentFolder);
     }
+    s.setValue("windowState", saveState());
     s.sync();
 }
 
