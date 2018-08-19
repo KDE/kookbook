@@ -69,7 +69,10 @@ void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultT
             tags[it].push_back(pair);
         }
         for(const auto& it : qAsConst(parsed.ingredients)) {
-            ingredients[it.ingredient].push_back(pair);
+            auto &list = ingredients[it.ingredient];
+            if (!list.contains(pair)) {
+                list.push_back(pair);
+            }
         }
     }
     
