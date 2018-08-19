@@ -75,11 +75,16 @@ void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultT
             }
         }
     }
-    
+    auto recipePairTitleSorter = [] (const auto& r1, const auto& r2) {
+            return r1.first < r2.first;
+        };
+
     auto parseding = std::make_unique<QStandardItemModel>();
     for(auto it = ingredients.constBegin(),end = ingredients.constEnd(); it!=end; it++) {
         auto line = std::make_unique<QStandardItem>(it.key());
-        for( const auto& recipe : qAsConst(it.value())) {
+        auto recipes = it.value();
+        std::sort(recipes.begin(), recipes.end(), recipePairTitleSorter);
+        for( const auto& recipe : qAsConst(recipes)) {
             auto child = std::make_unique<QStandardItem>(recipe.first);
             child->setData(recipe.second);
             line->appendRow(child.release());
@@ -89,16 +94,16 @@ void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultT
     auto parsedtags = std::make_unique<QStandardItemModel>();
     for(auto it = tags.constBegin(),end = tags.constEnd(); it!=end; it++) {
         auto line = std::make_unique<QStandardItem>(it.key());
-        for( const auto& recipe : qAsConst(it.value())) {
+        auto recipes = it.value();
+        std::sort(recipes.begin(), recipes.end(), recipePairTitleSorter);
+        for( const auto& recipe : qAsConst(recipes)) {
             auto child = std::make_unique<QStandardItem>(recipe.first);
             child->setData(recipe.second);
             line->appendRow(child.release());
         }
         parsedtags->appendRow(line.release());
     }
-    std::sort(titles.begin(), titles.end(), [] (auto left, auto right) {
-        return left.first < right.first;
-    });
+    std::sort(titles.begin(), titles.end(), recipePairTitleSorter);
     auto titlelist = std::make_unique<QStandardItemModel>();
     QHash<QString,QString> titlemap;
     for(auto title : qAsConst(titles)) {
