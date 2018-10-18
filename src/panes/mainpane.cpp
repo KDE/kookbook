@@ -25,21 +25,15 @@
 #include "mainpane.h"
 #include <QHBoxLayout>
 #include <memory>
-#include <QFile>
 #include <QTextBrowser>
-#include <QTextDocument>
 #include <QPrintDialog>
 #include <QPrintPreviewDialog>
 #include <QPrinter>
-
-extern "C"
-{
-#include <mkdio.h>
-}
+#include "recipedocument.h"
 
 MainPane::MainPane(QWidget* parent) : PaneBase(parent)
 {
-    m_document = std::make_unique<QTextDocument>();
+    m_document = std::make_unique<RecipeDocument>();
     auto layout = std::make_unique<QHBoxLayout>();
     auto textView = std::make_unique<QTextBrowser>();
     textView->setReadOnly(true);
@@ -54,34 +48,7 @@ MainPane::MainPane(QWidget* parent) : PaneBase(parent)
 
 void MainPane::openPath(const QString& path)
 {
-    QByteArray data;
-    if(QFile::exists(path)) {
-        QFile f(path);
-        bool success = f.open(QIODevice::ReadOnly);
-        if(!success) {
-            return;
-        }
-        data = f.readAll();
-    } else {
-        QFile f(":/docs/intro.md");
-        f.open(QIODevice::ReadOnly);
-        data = f.readAll();
-    }
-
-    MMIOT* handle = mkd_string(data,data.size(), 0);
-
-    int success = mkd_compile(handle, 0);
-    if (!success ) {
-        return;
-    }
-
-    char* html;
-    int length = mkd_document(handle, &html);
-
-    m_document->setHtml(QString::fromUtf8(html,length));
-
-    mkd_cleanup(handle);
-
+    m_document->openPath(path);
 }
 
 void MainPane::print()

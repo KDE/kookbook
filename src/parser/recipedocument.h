@@ -22,37 +22,27 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-#pragma once
-#include "panebase.h"
-#include <memory>
 
-class RecipeDocument;
+#ifndef RECIPEDOCUMENT_H
+#define RECIPEDOCUMENT_H
+
+#include <QTextDocument>
+#include "activedocumentlistener.h"
 
 /**
- * The main view for rendering the recipes.
+ * TextDocument for handling markdown files from a path
  */
-class MainPane : public PaneBase
+class RecipeDocument : public QTextDocument, public ActiveDocumentListener
 {
     Q_OBJECT
+
 public:
-    MainPane(QWidget* parent = nullptr) ;
-    ~MainPane();
-Q_SIGNALS:
-    /**
-     * Requests a simple notification
-     * \param msg The message to notify
-     */
-    void notifySimple(const QString& msg);
-public Q_SLOTS:
+    RecipeDocument(QObject* parent = nullptr);
+
+    void clear() override;
+
     void openPath(const QString& path) override;
-    /**
-     * Starts printing the viewed document
-     */
-    void print();
-    /**
-     * Starts print preview (and printing)
-     */
-    void printPreview();
-private:
-    std::unique_ptr<RecipeDocument> m_document;
+
 };
+
+#endif // RECIPEDOCUMENT_H

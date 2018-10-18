@@ -1,4 +1,5 @@
 
-add_library(parser STATIC ingredientsextractor.cpp recipeparser.cpp)
-target_link_libraries(parser PUBLIC Qt5::Core)
+add_library(parser STATIC ingredientsextractor.cpp recipeparser.cpp recipedocument.cpp)
+target_link_libraries(parser PUBLIC Qt5::Core Qt5::Gui PRIVATE discount::Lib)
 target_include_directories(parser INTERFACE .)
+target_include_directories(parser PUBLIC ..)

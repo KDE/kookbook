@@ -22,37 +22,54 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-#pragma once
-#include "panebase.h"
-#include <memory>
 
-class RecipeDocument;
+#include "recipedocument.h"
+#include <QFile>
 
-/**
- * The main view for rendering the recipes.
- */
-class MainPane : public PaneBase
+extern "C"
 {
-    Q_OBJECT
-public:
-    MainPane(QWidget* parent = nullptr) ;
-    ~MainPane();
-Q_SIGNALS:
-    /**
-     * Requests a simple notification
-     * \param msg The message to notify
-     */
-    void notifySimple(const QString& msg);
-public Q_SLOTS:
-    void openPath(const QString& path) override;
-    /**
-     * Starts printing the viewed document
-     */
-    void print();
-    /**
-     * Starts print preview (and printing)
-     */
-    void printPreview();
-private:
-    std::unique_ptr<RecipeDocument> m_document;
-};
+#include <mkdio.h>
+}
+
+
+RecipeDocument::RecipeDocument(QObject* parent) : QTextDocument(parent)
+{
+}
+
+void RecipeDocument::clear()
+{
+    QTextDocument::clear();
+}
+
+void RecipeDocument::openPath(const QString& path)
+{
+
+    QByteArray data;
+    if(QFile::exists(path)) {
+        QFile f(path);
+        bool success = f.open(QIODevice::ReadOnly);
+        if(!success) {
+            return;
+        }
+        data = f.readAll();
+    } else {
+        QFile f(":/docs/intro.md");
+        f.open(QIODevice::ReadOnly);
+        data = f.readAll();
+    }
+
+    MMIOT* handle = mkd_string(data,data.size(), 0);
+
+    int success = mkd_compile(handle, 0);
+    if (!success ) {
+        return;
+    }
+
+    char* html;
+    int length = mkd_document(handle, &html);
+
+    setHtml(QString::fromUtf8(html,length));
+
+    mkd_cleanup(handle);
+}
+
