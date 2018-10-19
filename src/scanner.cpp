@@ -45,7 +45,7 @@ void Scanner::doUpdate()
     }
     if (!m_rootPath.isEmpty()) {
         m_running = true;
-        std::async(&Scanner::parseThingsInDifferentThread,this,m_rootPath,QThread::currentThread());
+        m_future = std::async(&Scanner::parseThingsInDifferentThread,this,m_rootPath,QThread::currentThread());
     }
 }
 

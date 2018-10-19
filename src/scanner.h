@@ -29,6 +29,7 @@
 #include "recipeparser.h"
 #include <memory>
 #include <QHash>
+#include <future>
 
 class QAbstractItemModel;
 /**
@@ -91,4 +92,5 @@ private:
     void parseThingsInDifferentThread(const QString& path, QThread* targetThread);
     QString m_rootPath;
     std::atomic_bool m_running;
+    std::future<void> m_future;
 };
