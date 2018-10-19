@@ -52,11 +52,10 @@ void Scanner::doUpdate()
 void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultThread) {
     
     QDirIterator it(path, QStringList() << "*.recipe.md", QDir::NoDotAndDotDot | QDir::Files, QDirIterator::Subdirectories);
-    auto fstree = std::make_unique<QStandardItemModel>();
     QMap<QString, QVector<QPair<QString,QString>>> tags;
     QMap<QString, QVector<QPair<QString,QString>>> ingredients;
     QVector<QPair<QString, QString>> titles;
-    
+
     while (it.hasNext()) {
         it.next();
         QFileInfo fi = it.fileInfo();
@@ -79,30 +78,24 @@ void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultT
             return r1.first < r2.first;
         };
 
-    auto parseding = std::make_unique<QStandardItemModel>();
-    for(auto it = ingredients.constBegin(),end = ingredients.constEnd(); it!=end; it++) {
-        auto line = std::make_unique<QStandardItem>(it.key());
-        auto recipes = it.value();
-        std::sort(recipes.begin(), recipes.end(), recipePairTitleSorter);
-        for( const auto& recipe : qAsConst(recipes)) {
-            auto child = std::make_unique<QStandardItem>(recipe.first);
-            child->setData(recipe.second);
-            line->appendRow(child.release());
+    auto buildTreeFromMap = [&recipePairTitleSorter] (QMap<QString, QVector<QPair<QString,QString>>> map) {
+        auto result = std::make_unique<QStandardItemModel>();
+        for(auto it = map.constBegin(),end = map.constEnd(); it!=end; it++) {
+            auto line = std::make_unique<QStandardItem>(it.key());
+            auto recipes = it.value();
+            std::sort(recipes.begin(), recipes.end(), recipePairTitleSorter);
+            for(const auto& recipe : qAsConst(recipes)) {
+                auto child = std::make_unique<QStandardItem>(recipe.first);
+                child->setData(recipe.second);
+                line->appendRow(child.release());
+            }
+            result->appendRow(line.release());
         }
-        parseding->appendRow(line.release());
-    }
-    auto parsedtags = std::make_unique<QStandardItemModel>();
-    for(auto it = tags.constBegin(),end = tags.constEnd(); it!=end; it++) {
-        auto line = std::make_unique<QStandardItem>(it.key());
-        auto recipes = it.value();
-        std::sort(recipes.begin(), recipes.end(), recipePairTitleSorter);
-        for( const auto& recipe : qAsConst(recipes)) {
-            auto child = std::make_unique<QStandardItem>(recipe.first);
-            child->setData(recipe.second);
-            line->appendRow(child.release());
-        }
-        parsedtags->appendRow(line.release());
-    }
+        return std::move(result);
+    };
+
+    auto parseding = buildTreeFromMap(ingredients);
+    auto parsedtags = buildTreeFromMap(tags);
     std::sort(titles.begin(), titles.end(), recipePairTitleSorter);
     auto titlelist = std::make_unique<QStandardItemModel>();
     QHash<QString,QString> titlemap;
@@ -112,10 +105,9 @@ void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultT
         line->setData(title.second);
         titlelist->appendRow(line.release());
     }
-    
+
     parseding->moveToThread(resultThread);
     parsedtags->moveToThread(resultThread);
-    fstree->moveToThread(resultThread);
     titlelist->moveToThread(resultThread);
     std::unique_lock<std::mutex> lock(m_mutex);
     m_parsedIngredients = std::move(parseding);
