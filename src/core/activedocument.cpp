@@ -23,8 +23,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 #include "activedocument.h"
+#include "activedocumentlistener.h"
 #include <QFileSystemWatcher>
-#include "panebase.h"
 #include <QDebug>
 
 ActiveDocument::ActiveDocument(QObject* parent)
@@ -48,9 +48,9 @@ void ActiveDocument::openPath(const QString& file)
     if (!m_currentPath.isEmpty()) {
         m_watcher->removePath(m_currentPath);
     }
-        
+
     m_currentPath = file;
-    
+
     if (!m_currentPath.isEmpty()) {
         m_watcher->addPath(m_currentPath);
     }
@@ -64,7 +64,7 @@ void ActiveDocument::reload()
     }
 }
 
-void ActiveDocument::checkedReload(const QString& path) 
+void ActiveDocument::checkedReload(const QString& path)
 {
     if (path == m_currentPath) {
         reload();

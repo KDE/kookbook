@@ -50,7 +50,7 @@ void Scanner::doUpdate()
 }
 
 void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultThread) {
-    
+
     QDirIterator it(path, QStringList() << "*.recipe.md", QDir::NoDotAndDotDot | QDir::Files, QDirIterator::Subdirectories);
     QMap<QString, QVector<QPair<QString,QString>>> tags;
     QMap<QString, QVector<QPair<QString,QString>>> ingredients;
