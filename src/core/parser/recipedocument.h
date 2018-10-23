@@ -26,23 +26,17 @@
 #ifndef RECIPEDOCUMENT_H
 #define RECIPEDOCUMENT_H
 
-#include <QTextDocument>
-#include "activedocumentlistener.h"
+#include <QString>
 
 /**
- * TextDocument for handling markdown files from a path
+ * Parser for reading recipe markdown files into html
  */
-class RecipeDocument : public QTextDocument, public ActiveDocumentListener
+class RecipeDocument
 {
-    Q_OBJECT
-
 public:
-    RecipeDocument(QObject* parent = nullptr);
-
-    void clear() override;
-
-    void openPath(const QString& path) override;
-
+    static QString openPath(const QString& path);
+    RecipeDocument() = delete;
+    ~RecipeDocument() = delete;
 };
 
 #endif // RECIPEDOCUMENT_H

@@ -32,16 +32,7 @@ extern "C"
 }
 
 
-RecipeDocument::RecipeDocument(QObject* parent) : QTextDocument(parent)
-{
-}
-
-void RecipeDocument::clear()
-{
-    QTextDocument::clear();
-}
-
-void RecipeDocument::openPath(const QString& path)
+QString RecipeDocument::openPath(const QString& path)
 {
 
     QByteArray data;
@@ -49,7 +40,7 @@ void RecipeDocument::openPath(const QString& path)
         QFile f(path);
         bool success = f.open(QIODevice::ReadOnly);
         if(!success) {
-            return;
+            return {};
         }
         data = f.readAll();
     } else {
@@ -62,14 +53,15 @@ void RecipeDocument::openPath(const QString& path)
 
     int success = mkd_compile(handle, 0);
     if (!success ) {
-        return;
+        return {};
     }
 
     char* html;
     int length = mkd_document(handle, &html);
 
-    setHtml(QString::fromUtf8(html,length));
+    QString htmldata = QString::fromUtf8(html,length);
 
     mkd_cleanup(handle);
-}
 
+    return htmldata;
+}

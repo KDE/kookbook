@@ -9,7 +9,7 @@ See the file format section for details on the file format.
 
 Recipes can be synced with others using external tools like git repositories, nextcloud or many other services.
 
-## The application
+## The desktop application
 
 The application consists of a set of panes. Some are for helping finding recipes in different ways, and others are for help recipe writers figuring out how it is parsed.
 

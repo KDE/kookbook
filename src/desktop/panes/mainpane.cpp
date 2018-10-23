@@ -33,7 +33,7 @@
 
 MainPane::MainPane(QWidget* parent) : PaneBase(parent)
 {
-    m_document = std::make_unique<RecipeDocument>();
+    m_document = std::make_unique<QTextDocument>();
     auto layout = std::make_unique<QHBoxLayout>();
     auto textView = std::make_unique<QTextBrowser>();
     textView->setReadOnly(true);
@@ -48,7 +48,7 @@ MainPane::MainPane(QWidget* parent) : PaneBase(parent)
 
 void MainPane::openPath(const QString& path)
 {
-    m_document->openPath(path);
+    m_document->setHtml(RecipeDocument::openPath(path));
 }
 
 void MainPane::print()

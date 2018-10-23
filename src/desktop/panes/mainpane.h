@@ -26,7 +26,7 @@
 #include "panebase.h"
 #include <memory>
 
-class RecipeDocument;
+class QTextDocument;
 
 /**
  * The main view for rendering the recipes.
@@ -54,5 +54,5 @@ public Q_SLOTS:
      */
     void printPreview();
 private:
-    std::unique_ptr<RecipeDocument> m_document;
+    std::unique_ptr<QTextDocument> m_document;
 };
