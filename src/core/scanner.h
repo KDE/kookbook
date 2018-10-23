@@ -63,6 +63,7 @@ public:
      * Sets the (new) root path and triggers a re-indexing of everything.
      */
     void setRootPath(const QString& path);
+    QString rootPath() const;
     ~Scanner();
 public Q_SLOTS:
     /**

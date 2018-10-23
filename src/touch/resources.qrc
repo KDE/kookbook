@@ -1,0 +1,10 @@
+<!DOCTYPE RCC><RCC version="1.0">
+ <qresource>
+    <file>qml/main.qml</file>
+    <file>qml/MainPage.qml</file>
+    <file>qml/Recipe.qml</file>
+    <file>qml/Help.qml</file>
+    <file>qml/FileOpen.qml</file>
+    <file>qml/SelectFolder.qml</file>
+ </qresource>
+</RCC>

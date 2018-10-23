@@ -105,6 +105,10 @@ void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultT
         line->setData(title.second);
         titlelist->appendRow(line.release());
     }
+    QHash<int, QByteArray> titleListRoleNames;
+    titleListRoleNames[Qt::DisplayRole] = "display";
+    titleListRoleNames[Qt::UserRole +1] = "path";
+    titlelist->setItemRoleNames(titleListRoleNames);
 
     parseding->moveToThread(resultThread);
     parsedtags->moveToThread(resultThread);
@@ -142,6 +146,12 @@ void Scanner::setRootPath(const QString& path)
     m_rootPath = path;
     doUpdate();
 }
+
+QString Scanner::rootPath() const
+{
+    return m_rootPath;
+}
+
 
 QHash<QString, QString> Scanner::parsedFileNameTitleMap() const
 {
