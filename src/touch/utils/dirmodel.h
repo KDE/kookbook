@@ -57,6 +57,8 @@ public:
     Q_PROPERTY(QString filter READ filter WRITE setFilter NOTIFY filterChanged)
     /** Current path */
     Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)
+    /** Current directory name */
+    Q_PROPERTY(QString dirName READ dirName NOTIFY pathChanged)
     /** The current mode (available files types)*/
     Q_PROPERTY(Mode mode READ mode WRITE setMode NOTIFY modeChanged)
     // TODO Q_PROPERTY(QStringList filterList ....) to be able to match e.g. *.pdf or whatever
@@ -71,6 +73,7 @@ public:
     void setPath(const QString& newPath);
     Mode mode() const;
     void setMode(Mode mode);
+    QString dirName() const;
 
 Q_SIGNALS:
     void filterChanged();
@@ -109,6 +112,7 @@ public:
     };
     void setMode(DirModel::Mode newMode);
     DirModel::Mode mode() const;
+    QString dirName() const;
 
 
 private:

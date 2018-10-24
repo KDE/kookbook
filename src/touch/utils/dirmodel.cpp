@@ -45,6 +45,12 @@ QString DirModel::filter() const
     return m_filter;
 }
 
+QString DirModel::dirName() const
+{
+    return m_sourceModel->dirName();
+}
+
+
 QObject* DirModel::filteredModel() const
 {
     return m_filterModel.get();
@@ -67,11 +73,13 @@ void DirModel::setFilter(const QString& newFilter)
 void DirModel::cd(const QString& path)
 {
     m_sourceModel->cd(path);
+    emit pathChanged();
 }
 
 void DirModel::cdUp()
 {
     m_sourceModel->cdUp();
+    emit pathChanged();
 }
 
 DirModel::Mode DirModel::mode() const
@@ -124,7 +132,7 @@ void DirModelModel::setPath(const QString& newPath)
 {
     if (m_path.currentPath() != newPath) {
         beginResetModel();
-        m_path.setCurrent(newPath);
+        m_path.setPath(newPath);
         refresh();
         endResetModel();
     }
@@ -201,4 +209,9 @@ void DirModelModel::setMode(DirModel::Mode newMode)
         refresh();
         endResetModel();
     }
+}
+
+QString DirModelModel::dirName() const
+{
+    return m_path.dirName();
 }

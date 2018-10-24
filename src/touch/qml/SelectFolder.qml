@@ -32,7 +32,7 @@ import Utils 1.0
 Kirigami.ScrollablePage {
 
     id: page
-    title: open.path
+    title: open.dirName
     signal selected(string path)
     FileOpen {
         id: open

@@ -34,6 +34,7 @@ ListView {
     property var _dirmodel: DirModel { id: dirmodel }
     property alias path: dirmodel.path
     property alias mode: dirmodel.mode
+    property alias dirName: dirmodel.dirName
     id: listView
     signal selected(string path)
     model: dirmodel.filteredModel
