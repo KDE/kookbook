@@ -27,6 +27,12 @@
 #include <QIODevice>
 #include <QDebug>
 
+enum class State {
+    Unknown,
+    ParsingMetaData,
+    ParsingIngredients
+};
+
 RecipeParser::ParsedRecipe RecipeParser::parseRecipe(QIODevice* input)
 {
     if (!input) {
@@ -38,60 +44,59 @@ RecipeParser::ParsedRecipe RecipeParser::parseRecipe(QIODevice* input)
     }
 
     RecipeParser::ParsedRecipe result;
+    auto state = State::Unknown;
     while (!input->atEnd()) {
-        // read until title
         QByteArray line = input->readLine(2000);
         if (line.startsWith("# ")) {
             result.title = QString::fromUtf8(line.right(line.length()-2)).trimmed();
-            break;
+            continue;
         }
-    }
-
-    while (!input->atEnd()) {
-        // scroll thru introduction
-        QByteArray line = input->readLine(2000);
         if (line.startsWith("### Ingred")) {
-            break;
+            state = State::ParsingIngredients;
+            continue;
         }
-    }
-
-    while (!input->atEnd()) {
-        QByteArray line = input->readLine(2000);
         if (line.startsWith("### Direc")) {
-            break;
+            state = State::Unknown;
+            continue;
         }
-        auto ingredient = IngredientsExtractor::parseLine(QString::fromUtf8(line));
-        if (!ingredient.unit.isEmpty() && !ingredient.ingredient.isEmpty()) {
-            result.ingredients.push_back(std::move(ingredient));
-        }
-    }
-
-    while (!input->atEnd()) {
-        // scroll thru directions
-        QByteArray line = input->readLine(2000);
         if (line.startsWith("### Meta")) {
-            break;
+            state = State::ParsingMetaData;
+            continue;
         }
-    }
-
-    while (!input->atEnd()) {
-        QByteArray line = input->readLine(2000);
-        int sep = line.indexOf(':');
-        if (sep != -1) {
-            QString key = QString::fromUtf8(line.left(sep)).trimmed();
-            QString value = QString::fromUtf8(line.mid(sep+1)).trimmed();
-            if (!value.isEmpty())
+        switch(state)
+        {
+            case State::ParsingIngredients:
             {
-                if (key == QLatin1String("tags")) {
-                    QStringList tags = value.split(',',QString::SkipEmptyParts);
-                    for(QString tag : qAsConst(tags)) {
-                        result.tags.push_back(tag.trimmed());
-                    }
-                } else {
-                    result.otherMeta[key].push_back(value);
+                auto ingredient = IngredientsExtractor::parseLine(QString::fromUtf8(line));
+                if (!ingredient.unit.isEmpty() && !ingredient.ingredient.isEmpty()) {
+                    result.ingredients.push_back(std::move(ingredient));
                 }
+                continue;
             }
+            case State::ParsingMetaData:
+            {
+                int sep = line.indexOf(':');
+                if (sep != -1) {
+                    QString key = QString::fromUtf8(line.left(sep)).trimmed();
+                    QString value = QString::fromUtf8(line.mid(sep+1)).trimmed();
+                    if (!value.isEmpty())
+                    {
+                        if (key == QLatin1String("tags")) {
+                            QStringList tags = value.split(',',QString::SkipEmptyParts);
+                            for(QString tag : qAsConst(tags)) {
+                                result.tags.push_back(tag.trimmed());
+                            }
+                        } else {
+                            result.otherMeta[key].push_back(value);
+                        }
+                    }
+                }
+                continue;
+            }
+            case State::Unknown:
+                continue;
         }
+
     }
 
     return result;
