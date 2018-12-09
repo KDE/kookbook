@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kookbook
+GenericName=Touch Friendly Recipe manager
+Comment=Touch Friendly Simple recipe collection handling applicatio
+Exec=kookbooktouch
+Icon=wine
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Utility;Viewer;TextTools;ArtQt;
