@@ -48,6 +48,7 @@ MainPane::MainPane(QWidget* parent) : PaneBase(parent)
 
 void MainPane::openPath(const QString& path)
 {
+    m_document->setBaseUrl(QUrl::fromLocalFile(path));
     m_document->setHtml(RecipeDocument::openPath(path));
 }
 
