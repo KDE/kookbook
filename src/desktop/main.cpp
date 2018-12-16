@@ -35,7 +35,7 @@ int main(int argc, char** argv)
     QApplication app(argc, argv);
 
     QString themeFilePath = QStandardPaths::locate(QStandardPaths::AppDataLocation, QLatin1String("icons/breeze/breeze-icons.rcc"));
-    if (QFile::exists(themeFilePath)) {
+    if (!themeFilePath.isEmpty() && QFile::exists(themeFilePath)) {
         bool ok = QResource::registerResource(themeFilePath, "/icons/breeze");
         if (ok) {
             QIcon::setThemeName("breeze");

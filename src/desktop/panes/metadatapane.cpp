@@ -50,7 +50,7 @@ void MetaDataPane::openPath(const QString& path)
 {
     m_model->clear();
 
-    if (!QFile::exists(path)) {
+    if (path.isEmpty() || !QFile::exists(path)) {
         return;
     }
 

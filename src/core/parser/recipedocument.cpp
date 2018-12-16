@@ -34,9 +34,8 @@ extern "C"
 
 QString RecipeDocument::openPath(const QString& path)
 {
-
     QByteArray data;
-    if(QFile::exists(path)) {
+    if(!path.isEmpty() && QFile::exists(path)) {
         QFile f(path);
         bool success = f.open(QIODevice::ReadOnly);
         if(!success) {

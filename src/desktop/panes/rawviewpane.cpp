@@ -40,7 +40,7 @@ RawViewPane::RawViewPane(QWidget* parent) : PaneBase(parent)
 
 void RawViewPane::openPath(const QString& path)
 {
-    if (QFile::exists(path))
+    if (!path.isEmpty() && QFile::exists(path))
     {
         QFile f(path);
         bool isOpen = f.open(QIODevice::ReadOnly);
