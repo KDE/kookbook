@@ -171,7 +171,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     for(auto dock : qAsConst(developerDocks)) {
         dock->hide();
     }
-    auto toolbar = std::make_unique<QToolBar>("Main Toolbar");
+    auto toolbar = addToolBar("Main Toolbar");
     toolbar->setObjectName("Main Toolbar");
     {
         auto action = toolbar->addAction(QIcon::fromTheme("document-open-folder"),"Open collection",this, &MainWindow::openFolder);
@@ -194,13 +194,15 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         auto action = toolbar->addAction(QIcon::fromTheme("document-print"),"Print current recipe", m_mainPane, &MainPane::print);
         action->setShortcut(QKeySequence(QKeySequence::Print));
     }
+    toolbar->toggleViewAction()->setEnabled(false);
     toolbar->addAction(QIcon::fromTheme("document-print-preview"),"Print preview current recipe", m_mainPane, &MainPane::printPreview);
-    addToolBar(Qt::TopToolBarArea, toolbar.release());
+    addToolBar(Qt::TopToolBarArea, toolbar);
     QSettings s;
     s.beginGroup("General");
     setCurrentFolder(s.value("location", QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/recipes/").toString());
     restoreState(s.value("windowState", QByteArray()).toByteArray());
     statusBar()->show();
+    toolbar->show();
 }
 
 MainWindow::~MainWindow()
