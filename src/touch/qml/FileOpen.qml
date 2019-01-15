@@ -38,6 +38,7 @@ ListView {
     id: listView
     signal selected(string path)
     model: dirmodel.filteredModel
+    onPathChanged: if(headerItem && headerItem.text) headerItem.text = ""
     header: Controls.TextField {
         id: search
         placeholderText: "Search..."
