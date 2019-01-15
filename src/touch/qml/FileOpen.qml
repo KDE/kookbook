@@ -98,10 +98,10 @@ ListView {
                 }
             }
             Rectangle {
-                    width: height
-                    height: parent.height * 3
-                    radius: height / 2
-                    color: Kirigami.Theme.backgroundColor
+                width: height
+                height: parent.height * 3
+                radius: height / 2
+                color: Kirigami.Theme.backgroundColor
                 Kirigami.Icon {
                     source: type === "folder" ? "folder-open" : "document-open"
                     anchors.fill: parent
@@ -111,7 +111,6 @@ ListView {
                         onClicked: selected(fullpath)
                     }
                 }
-
             }
         }
 }
