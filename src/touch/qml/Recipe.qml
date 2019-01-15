@@ -43,6 +43,7 @@ Kirigami.ScrollablePage {
         readOnly: true
         textFormat: TextEdit.RichText
         wrapMode: TextEdit.WordWrap
+        baseUrl: "file://" + loader.path
     }
 
 
