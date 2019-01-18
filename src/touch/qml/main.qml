@@ -40,6 +40,9 @@ Kirigami.ApplicationWindow {
     height: 640
     title: "Kookbook"
     header: Kirigami.ApplicationHeader {}
+    contextDrawer: Kirigami.ContextDrawer {
+        id: contextDrawer
+    }
 
     globalDrawer: Kirigami.GlobalDrawer {
         title: "Kookbook"
@@ -57,6 +60,7 @@ Kirigami.ApplicationWindow {
                 text: "Open cookbook"
                 iconName: "document-open-folder"
                 onTriggered: {
+                    root.pageStack.pop(null)
                     var newItem = root.pageStack.push(Qt.resolvedUrl("SelectFolder.qml"))
                     newItem.selected.connect(function (path) {
                         scanner.rootPath = path

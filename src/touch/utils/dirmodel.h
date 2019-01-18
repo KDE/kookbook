@@ -46,6 +46,7 @@ public:
         Folders = QDir::Dirs,
         Files = QDir::Files,
         Drives = QDir::Drives,
+        Hidden = QDir::Hidden,
         AllEntries = QDir::AllEntries
     };
     Q_ENUM(Mode)

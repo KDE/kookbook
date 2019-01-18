@@ -33,10 +33,19 @@ Kirigami.ScrollablePage {
 
     id: page
     title: open.dirName
+    contextualActions: [
+        Kirigami.Action {
+            id: showHidden
+            text: "Show hidden folders"
+            checkable: true
+            checked: false
+        }
+    ]
+
     signal selected(string path)
     FileOpen {
         id: open
-        mode: DirModel.Folders
+        mode: showHidden.checked ? DirModel.Folders | DirModel.Hidden : DirModel.Folders
         path: StandardPaths.Documents
         onSelected: page.selected(path)
     }
