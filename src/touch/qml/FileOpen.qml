@@ -79,7 +79,7 @@ ListView {
         }
         z: 2
     }
-    headerPositioning: ListView.PullBackFooter
+    headerPositioning: ListView.PullBackHeader
     currentIndex: -1
     property var openPageIndex: -1
     delegate: Kirigami.BasicListItem {
