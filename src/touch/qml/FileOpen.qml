@@ -40,6 +40,11 @@ ListView {
     model: dirmodel.filteredModel
     onPathChanged: if(headerItem && headerItem.text) headerItem.text = ""
     header: Controls.TextField {
+        onActiveFocusChanged: {
+            if (activeFocus) {
+                listView.currentIndex = -1
+            }
+        }
         id: search
         placeholderText: "Search..."
         onTextChanged: dirmodel.filter = text
