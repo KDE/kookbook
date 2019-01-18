@@ -67,7 +67,6 @@ Kirigami.ScrollablePage {
         anchors.fill: parent
         model: scanner.titleList
         currentIndex: -1
-        property var openPageIndex: -1
         delegate: Kirigami.BasicListItem {
             reserveSpaceForIcon: false
             label: display
@@ -76,7 +75,6 @@ Kirigami.ScrollablePage {
                 item.path = path;
                 item.title = display
             }
-            checked: listView.openPageIndex == index
             highlighted: focus && ListView.isCurrentItem
         }
     }

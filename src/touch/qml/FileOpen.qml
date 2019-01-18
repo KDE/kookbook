@@ -86,11 +86,9 @@ ListView {
     }
     headerPositioning: ListView.PullBackHeader
     currentIndex: -1
-    property var openPageIndex: -1
     delegate: Kirigami.BasicListItem {
             label: display
             icon: model.icon
-            checked: listView.openPageIndex == index
             highlighted: focus && ListView.isCurrentItem
             onClicked: {
                 if(ListView.isCurrentItem) {
