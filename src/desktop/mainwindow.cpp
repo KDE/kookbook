@@ -43,6 +43,7 @@
 #include <QStatusBar>
 #include <QSettings>
 #include <QAbstractItemModel>
+#include <QRandomGenerator>
 
 auto mkdock(const QString& title) {
     auto dock = std::make_unique<QDockWidget>(title);
@@ -194,8 +195,9 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         auto action = toolbar->addAction(QIcon::fromTheme("document-print"),"Print current recipe", m_mainPane, &MainPane::print);
         action->setShortcut(QKeySequence(QKeySequence::Print));
     }
-    toolbar->toggleViewAction()->setEnabled(false);
+    toolbar->addAction(QIcon::fromTheme("randomize"), "Display random recipe", this, &MainWindow::showRandomRecipe);
     toolbar->addAction(QIcon::fromTheme("document-print-preview"),"Print preview current recipe", m_mainPane, &MainPane::printPreview);
+    toolbar->toggleViewAction()->setEnabled(false);
     addToolBar(Qt::TopToolBarArea, toolbar);
     QSettings s;
     s.beginGroup("General");
@@ -248,6 +250,14 @@ void MainWindow::newRecipe()
     }
     m_activeDocument->openPath(file);
     openFile(file);
+}
+
+void MainWindow::showRandomRecipe()
+{
+    QHash<QString, QString> map = m_scanner->parsedFileNameTitleMap();
+    auto iterator = map.keyBegin();
+    std::advance(iterator, QRandomGenerator::global()->bounded(map.size()));
+    m_activeDocument->openPath(*iterator);
 }
 
 void MainWindow::notifyStatusBar(const QString& message)

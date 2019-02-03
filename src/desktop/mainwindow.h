@@ -53,6 +53,8 @@ private Q_SLOTS:
     void newRecipe();
     /** writes message to the status bar (for a short interval)*/
     void notifyStatusBar(const QString& message);
+    /** opens random recipe*/
+    void showRandomRecipe();
 private:
     /** Sets the current folder (and notifies whoever needs it) */
     void setCurrentFolder(const QString& folder);
