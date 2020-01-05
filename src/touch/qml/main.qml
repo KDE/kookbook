@@ -39,7 +39,6 @@ Kirigami.ApplicationWindow {
     width: 480
     height: 640
     title: "Kookbook"
-    header: Kirigami.ApplicationHeader {}
     contextDrawer: Kirigami.ContextDrawer {
         id: contextDrawer
     }
