@@ -23,7 +23,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import QtQuick 2.4
+import QtQuick 2.12
 import QtQuick.Controls 2.0 as Controls
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.4 as Kirigami
@@ -34,28 +34,30 @@ Kirigami.ScrollablePage {
 
     title: "Kookbook"
 
-
-    ListView{
+    ListView {
         id: listView
-        header:     Controls.TextField {
+        header: Controls.TextField {
             id: search
-            placeholderText: "Search..."
+            placeholderText: qsTr("Search...")
             onTextChanged: scanner.filter = text
             width: listView.width
-            Rectangle {
-                anchors.fill: parent
-                z: -1
-                color: Kirigami.Theme.backgroundColor
-            }
-            Kirigami.Icon{
-                source: "edit-clear"
-                height: parent.height / 2
-                width: height
+            leftPadding: Kirigami.Units.largeSpacing
+
+            Item {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
+                height: parent.height
+                width: height
+
+                Kirigami.Icon {
+                    anchors.centerIn: parent
+                    source: "edit-clear"
+                    height: parent.height / 2
+                    width: height
+                    smooth: true
+                }
+                TapHandler {
+                    onTapped: {
                         search.text = ""
                     }
                 }
@@ -67,6 +69,7 @@ Kirigami.ScrollablePage {
         anchors.fill: parent
         model: scanner.titleList
         currentIndex: -1
+
         delegate: Kirigami.BasicListItem {
             reserveSpaceForIcon: false
             label: display
@@ -77,6 +80,14 @@ Kirigami.ScrollablePage {
             }
             highlighted: focus && ListView.isCurrentItem
         }
-    }
 
+        Controls.Label {
+            anchors.fill: parent
+            horizontalAlignment: Qt.AlignHCenter
+            verticalAlignment: Qt.AlignVCenter
+            visible: parent.count == 0
+            text: qsTr("Nothing to show")
+            opacity: 0.6
+        }
+    }
 }

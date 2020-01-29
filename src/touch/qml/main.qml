@@ -48,36 +48,42 @@ Kirigami.ApplicationWindow {
         titleIcon: ":/appicon.svg"
         actions: [
             Kirigami.Action {
-                text: "Refresh"
+                text: qsTr("Refresh")
                 iconName: "view-refresh"
                 onTriggered: {
                     scanner.refresh()
-                    showPassiveNotification("Refreshing")
+                    showPassiveNotification(qsTr("Refreshing"))
                 }
             },
             Kirigami.Action {
-                text: "Open cookbook"
+                text: qsTr("Open cookbook")
                 iconName: "document-open-folder"
                 onTriggered: {
-                    root.pageStack.pop(null)
+                    if (root.pageStack.depth > 1) {
+                        root.pageStack.pop(null)
+                    }
                     var newItem = root.pageStack.push(Qt.resolvedUrl("SelectFolder.qml"))
                     newItem.selected.connect(function (path) {
                         scanner.rootPath = path
-                        root.pageStack.pop(null)
-                        showPassiveNotification("Scanning")
-                        })
+                        if (root.pageStack.depth > 1) {
+                            root.pageStack.pop(null)
+                        }
+                        showPassiveNotification(qsTr("Scanning"))
+                    })
                 }
 
             },
             Kirigami.Action {
-                text: "Home"
+                text: qsTr("Home")
                 iconName: "go-home"
                 onTriggered: {
-                    root.pageStack.pop(null)
+                    if (root.pageStack.depth > 1) {
+                        root.pageStack.pop(null)
+                    }
                 }
             },
             Kirigami.Action {
-                text: "Help"
+                text: qsTr("Help")
                 iconName: "help-contents"
                 onTriggered: root.pageStack.push(Qt.resolvedUrl("Help.qml"))
             }

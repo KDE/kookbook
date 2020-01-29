@@ -36,7 +36,7 @@ Kirigami.ScrollablePage {
     contextualActions: [
         Kirigami.Action {
             id: showHidden
-            text: "Show hidden folders"
+            text: qsTr("Show hidden folders")
             checkable: true
             checked: false
         }

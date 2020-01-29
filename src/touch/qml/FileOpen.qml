@@ -24,7 +24,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import QtQuick 2.10
+import QtQuick 2.12
 import QtQuick.Controls 2.0 as Controls
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.4 as Kirigami
@@ -46,39 +46,50 @@ ListView {
             }
         }
         id: search
-        placeholderText: "Search..."
+        placeholderText: qsTr("Search...")
         onTextChanged: dirmodel.filter = text
         width: listView.width
-        Rectangle {
-            anchors.fill: parent
-            z: -1
-            color: Kirigami.Theme.backgroundColor
-        }
+        leftPadding: Kirigami.Units.largeSpacing
+
         Row {
-            spacing: 20
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             height: parent.height
-            Kirigami.Icon{
+            rightPadding: contextDrawer.dragMargin
+            Item {
                 anchors.verticalCenter: parent.verticalCenter
-                source: "edit-clear"
-                height: parent.height / 2
+                height: parent.height
                 width: height
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
+
+                Kirigami.Icon {
+                    anchors.centerIn: parent
+                    source: "edit-clear"
+                    height: parent.height / 2
+                    width: height
+                    smooth: true
+                }
+                TapHandler {
+                    onTapped: {
                         search.text = ""
                     }
                 }
             }
-            Kirigami.Icon {
+            Item {
                 anchors.verticalCenter: parent.verticalCenter
-                source: "go-parent-folder"
-                height: parent.height / 2
+                height: parent.height
                 width: height
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: dirmodel.cdUp()
+
+                Kirigami.Icon {
+                    anchors.centerIn: parent
+                    source: "go-parent-folder"
+                    height: parent.height / 2
+                    width: height
+                    smooth: true
+                }
+                TapHandler {
+                    onTapped: {
+                        dirmodel.cdUp()
+                    }
                 }
             }
         }
@@ -86,35 +97,46 @@ ListView {
     }
     headerPositioning: ListView.PullBackHeader
     currentIndex: -1
+
     delegate: Kirigami.BasicListItem {
-            label: display
-            icon: model.icon
-            highlighted: focus && ListView.isCurrentItem
-            onClicked: {
-                if(ListView.isCurrentItem) {
-                    if (type === "folder") {
-                        dirmodel.cd(display)
-                    } else {
-                        selected(fullpath)
-                    }
+        label: display
+        icon: model.icon
+        highlighted: focus && ListView.isCurrentItem
+        onClicked: {
+            if(ListView.isCurrentItem) {
+                if (type === "folder") {
+                    dirmodel.cd(display)
                 } else {
-                    currentIndex = index;
+                    selected(fullpath)
                 }
-            }
-            Rectangle {
-                width: height
-                height: parent.height * 3
-                radius: height / 2
-                color: Kirigami.Theme.backgroundColor
-                Kirigami.Icon {
-                    source: type === "folder" ? "folder-open" : "document-open"
-                    anchors.fill: parent
-                    anchors.margins: parent.height / 6
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: selected(fullpath)
-                    }
-                }
+            } else {
+                currentIndex = index;
             }
         }
+        Rectangle {
+            width: height
+            height: parent.height * 3
+            radius: height / 2
+            color: Kirigami.Theme.backgroundColor
+
+            Kirigami.Icon {
+                source: type === "folder" ? "folder-open" : "document-open"
+                anchors.fill: parent
+                anchors.margins: parent.height / 6
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: selected(fullpath)
+            }
+        }
+    }
+
+    Controls.Label {
+        anchors.fill: parent
+        horizontalAlignment: Qt.AlignHCenter
+        verticalAlignment: Qt.AlignVCenter
+        visible: parent.count == 0
+        text: qsTr("Nothing to show")
+        opacity: 0.6
+    }
 }

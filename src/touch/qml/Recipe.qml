@@ -31,7 +31,7 @@ import Kookbook 1.0
 
 
 Kirigami.ScrollablePage {
-    title: "Recipe"
+    title: qsTr("Recipe")
     property alias path: loader.path
     DocumentLoader {
         id: loader

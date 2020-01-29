@@ -23,5 +23,5 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 Recipe {
-    title: "Help"
+    title: qsTr("Help")
 }
