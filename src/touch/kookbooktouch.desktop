@@ -1,7 +1,10 @@
 [Desktop Entry]
 Name=Kookbook
+Name[x-test]=xxKookbookxx
 GenericName=Touch Friendly Recipe manager
+GenericName[x-test]=xxTouch Friendly Recipe managerxx
 Comment=Touch Friendly Simple recipe collection handling applicatio
+Comment[x-test]=xxTouch Friendly Simple recipe collection handling applicatioxx
 Exec=kookbooktouch
 Icon=kookbook
 Terminal=false
