@@ -1,9 +1,12 @@
 [Desktop Entry]
 Name=Kookbook
+Name[pt]=Kookbook
 Name[x-test]=xxKookbookxx
 GenericName=Recipe manager
+GenericName[pt]=Gestor de receitas
 GenericName[x-test]=xxRecipe managerxx
 Comment=Simple recipe collection handling application
+Comment[pt]=Aplicação simples de tratamento de colecções de receitas
 Comment[x-test]=xxSimple recipe collection handling applicationxx
 Exec=kookbook
 Icon=kookbook
