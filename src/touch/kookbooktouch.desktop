@@ -1,11 +1,14 @@
 [Desktop Entry]
 Name=Kookbook
+Name[fr]=Kookbook
 Name[pt]=Kookbook
 Name[x-test]=xxKookbookxx
 GenericName=Touch Friendly Recipe manager
+GenericName[fr]=Gestionnaire de recettes facile et tactile
 GenericName[pt]=Gestor de receitas amigável para ecrãs tácteis
 GenericName[x-test]=xxTouch Friendly Recipe managerxx
 Comment=Touch Friendly Simple recipe collection handling applicatio
+Comment[fr]=Application tactile et facile pour la gestion de collection de recettes simples
 Comment[pt]=Aplicação simples de tratamento de colecções de receitas adequada para ecrãs tácteis
 Comment[x-test]=xxTouch Friendly Simple recipe collection handling applicatioxx
 Exec=kookbooktouch
