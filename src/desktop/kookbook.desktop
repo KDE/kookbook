@@ -1,11 +1,13 @@
 [Desktop Entry]
 Name=Kookbook
+Name[es]=Kookbook
 Name[fr]=Kookbook
 Name[pt]=Kookbook
 Name[sk]=Kookbook
 Name[sl]=Kookbook
 Name[x-test]=xxKookbookxx
 GenericName=Recipe manager
+GenericName[es]=Gestor de recetas
 GenericName[fr]=Gestionnaire de recettes
 GenericName[pt]=Gestor de receitas
 GenericName[sk]=Správca receptov
