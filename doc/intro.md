@@ -16,6 +16,7 @@ The application consists of a set of panes. Some are for helping finding recipes
 Right clicking on the top level toolbar let you hide and show panes.
 
 The top level toolbar contains some actions.
+
  * Open sets the root folder for the recipe collection, or cookbook.
  * Edit launches the system editor to let you edit the selected recipe.
  * New recipe creates a recipe from template and launches a system editor for editing the recipe.
