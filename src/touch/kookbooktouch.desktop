@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Kookbook
 Name[ca]=Kookbook
+Name[ca@valencia]=Kookbook
 Name[es]=Kookbook
 Name[fr]=Kookbook
 Name[it]=Kookbook
@@ -12,6 +13,7 @@ Name[uk]=Kookbook
 Name[x-test]=xxKookbookxx
 GenericName=Touch Friendly Recipe manager
 GenericName[ca]=Gestor tàctil d'ús fàcil per a receptes
+GenericName[ca@valencia]=Gestor tàctil d'ús fàcil per a receptes
 GenericName[es]=Gestor de recetas táctil
 GenericName[fr]=Gestionnaire de recettes facile et tactile
 GenericName[it]=Gestore delle ricette per schermi tattili
@@ -23,6 +25,7 @@ GenericName[uk]=Програма для керування рецептами д
 GenericName[x-test]=xxTouch Friendly Recipe managerxx
 Comment=Touch Friendly Simple recipe collection handling application
 Comment[ca]=Aplicació tàctil d'ús fàcil per a la gestió de col·leccions de receptes
+Comment[ca@valencia]=Aplicació tàctil d'ús fàcil per a la gestió de col·leccions de receptes
 Comment[es]=Sencilla aplicación táctil de gestión de colecciones de recetas
 Comment[fr]=Application tactile et facile pour la gestion de collection de recettes simples
 Comment[it]=Semplice applicazione di gestione delle raccolte di ricette per schermi tattili

@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Kookbook
 Name[ca]=Kookbook
+Name[ca@valencia]=Kookbook
 Name[es]=Kookbook
 Name[fr]=Kookbook
 Name[it]=Kookbook
@@ -12,6 +13,7 @@ Name[uk]=Kookbook
 Name[x-test]=xxKookbookxx
 GenericName=Recipe manager
 GenericName[ca]=Gestor de receptes
+GenericName[ca@valencia]=Gestor de receptes
 GenericName[es]=Gestor de recetas
 GenericName[fr]=Gestionnaire de recettes
 GenericName[it]=Gestore delle ricette
@@ -23,6 +25,7 @@ GenericName[uk]=Програма для керування рецептами
 GenericName[x-test]=xxRecipe managerxx
 Comment=Simple recipe collection handling application
 Comment[ca]=Aplicació per a la gestió de col·leccions de receptes
+Comment[ca@valencia]=Aplicació per a la gestió de col·leccions de receptes
 Comment[es]=Sencilla aplicación de gestión de colecciones de recetas
 Comment[fr]=Application de gestion de collection de recettes simples
 Comment[it]=Semplice applicazione di gestione di raccolte di ricette
