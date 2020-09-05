@@ -12,7 +12,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(Qt5 COMPONENTS Widgets PrintSupport Qml)
-find_package(Discount REQUIRED)
 
 set(CMAKE_AUTOMOC on)
 set(CMAKE_AUTORCC on)

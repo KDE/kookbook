@@ -41,7 +41,7 @@ Kirigami.ScrollablePage {
         font: Kirigami.Theme.defaultFont
         text: loader.text
         readOnly: true
-        textFormat: TextEdit.RichText
+        textFormat: TextEdit.MarkdownText
         wrapMode: TextEdit.WordWrap
         baseUrl: "file://" + loader.path
     }

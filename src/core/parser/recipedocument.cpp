@@ -26,12 +26,6 @@
 #include "recipedocument.h"
 #include <QFile>
 
-extern "C"
-{
-#include <mkdio.h>
-}
-
-
 QString RecipeDocument::openPath(const QString& path)
 {
     QByteArray data;
@@ -48,19 +42,5 @@ QString RecipeDocument::openPath(const QString& path)
         data = f.readAll();
     }
 
-    MMIOT* handle = mkd_string(data,data.size(), 0);
-
-    int success = mkd_compile(handle, 0);
-    if (!success ) {
-        return {};
-    }
-
-    char* html;
-    int length = mkd_document(handle, &html);
-
-    QString htmldata = QString::fromUtf8(html,length);
-
-    mkd_cleanup(handle);
-
-    return htmldata;
+    return data;
 }
