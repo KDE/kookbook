@@ -29,6 +29,7 @@
 #include <QPrintDialog>
 #include <QPrintPreviewDialog>
 #include <QPrinter>
+#include <QScrollBar>
 #include "recipedocument.h"
 
 MainPane::MainPane(QWidget* parent) : PaneBase(parent)
@@ -41,6 +42,7 @@ MainPane::MainPane(QWidget* parent) : PaneBase(parent)
     textView->setOpenExternalLinks(true);
     connect(textView.get(), QOverload<const QString&>::of(&QTextBrowser::highlighted), this, &MainPane::notifySimple);
 
+    m_textView = textView.get();
     layout->addWidget(textView.release());
     setLayout(layout.release());
     openPath(QString());
@@ -50,6 +52,10 @@ void MainPane::openPath(const QString& path)
 {
     m_document->setBaseUrl(QUrl::fromLocalFile(path));
     m_document->setMarkdown(RecipeDocument::openPath(path));
+
+    QTextCursor cursor = m_textView->textCursor();
+    cursor.setPosition(0);
+    m_textView->setTextCursor(cursor);
 }
 
 void MainPane::print()

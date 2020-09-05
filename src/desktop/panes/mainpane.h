@@ -27,6 +27,7 @@
 #include <memory>
 
 class QTextDocument;
+class QTextBrowser;
 
 /**
  * The main view for rendering the recipes.
@@ -55,4 +56,5 @@ public Q_SLOTS:
     void printPreview();
 private:
     std::unique_ptr<QTextDocument> m_document;
+    QTextBrowser *m_textView;
 };
