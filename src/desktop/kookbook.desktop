@@ -2,6 +2,7 @@
 Name=Kookbook
 Name[ca]=Kookbook
 Name[ca@valencia]=Kookbook
+Name[cs]=Kookbook
 Name[el]=Kookbook
 Name[es]=Kookbook
 Name[fr]=Kookbook
@@ -17,6 +18,7 @@ Name[x-test]=xxKookbookxx
 GenericName=Recipe manager
 GenericName[ca]=Gestor de receptes
 GenericName[ca@valencia]=Gestor de receptes
+GenericName[cs]=Správce receptů
 GenericName[el]=Διαχειριστής συνταγών
 GenericName[es]=Gestor de recetas
 GenericName[fr]=Gestionnaire de recettes
