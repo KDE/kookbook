@@ -25,5 +25,6 @@ add_executable(kookbook ${KOOKBOOK_SRCS})
 target_link_libraries(kookbook PRIVATE panes parser scanner activedocument)
 
 install(TARGETS kookbook DESTINATION ${KDE_INSTALL_BINDIR})
-install(FILES kookbook.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.kookbook.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.kookbook.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 ecm_install_icons(ICONS ${KOOKBOOK_ICONS_PNG} ${KOOKBOOK_ICONS_SVG} DESTINATION ${ICON_INSTALL_DIR} THEME hicolor)
