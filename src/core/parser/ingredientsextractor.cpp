@@ -28,7 +28,7 @@
 
 IngredientsExtractor::Ingredient IngredientsExtractor::parseLine(const QString& line)
 {
-    QRegularExpression regexp(" *\\* +([^ ,]+) +([^ ,]+) +([^,]+)");
+    QRegularExpression regexp(" *[-\\*] +([^ ,]+) +([^ ,]+) +([^,]+)");
 
     auto match = regexp.match(line);
     if (!match.hasMatch())

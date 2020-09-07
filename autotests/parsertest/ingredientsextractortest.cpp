@@ -64,6 +64,13 @@ void IngredientsExtractorTest::testThings_data()
     QTest::newRow("just comment") << " , foo" << IngredientsExtractor::Ingredient{};
     QTest::newRow("empty") << QString() << IngredientsExtractor::Ingredient{};
     QTest::newRow("almost empty") << " * " << IngredientsExtractor::Ingredient{};
+    QTest::newRow("simple dash") << " - 1.5 kg mel" << IngredientsExtractor::Ingredient{"1.5","kg","mel"};
+    QTest::newRow("simple almost dash") << "- 1.5 kg mel" << IngredientsExtractor::Ingredient{"1.5","kg","mel"};
+    QTest::newRow("simple extra spaces dash") << "- 1.5  kg   mel" << IngredientsExtractor::Ingredient{"1.5","kg","mel"};
+    QTest::newRow("half baked dash") << "- 1.5 kg " << IngredientsExtractor::Ingredient{};
+    QTest::newRow("with comment dash") << " - 1.5 kg mel, alternativt grahamsmel" << IngredientsExtractor::Ingredient{"1.5","kg","mel"};
+    QTest::newRow("with comment, no parsable ingredient dash") << " - mel, alternativt grahamsmel" << IngredientsExtractor::Ingredient{};
+    QTest::newRow("almost empty dash") << " - " << IngredientsExtractor::Ingredient{};
 }
 
 
