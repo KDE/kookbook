@@ -68,6 +68,7 @@
     <p>Kookbook is a simplistic recipe manager that will help you to maintain a collection of your favorite recipes.</p>
     <p xml:lang="ca">El Kookbook és un gestor simplista de receptes que ajuda a mantenir una col·lecció amb les receptes preferides.</p>
     <p xml:lang="ca-valencia">El Kookbook és un gestor simplista de receptes que ajuda a mantindre una col·lecció amb les receptes preferides.</p>
+    <p xml:lang="de">Kookbook ist eine einfache Rezeptverwaltung für Ihre gesammelten Lieblingsrezepte.</p>
     <p xml:lang="en-GB">Kookbook is a simplistic recipe manager that will help you to maintain a collection of your favourite recipes.</p>
     <p xml:lang="es">Kookbook es un sencillo gestor de recetas que le ayudará a mantener una colección con sus recetas favoritas.</p>
     <p xml:lang="fr">Kookbook est un gestionnaire de recette minimaliste pour vous aider à gérer une collection de vos recettes préférées.</p>
@@ -84,6 +85,7 @@
     <p>Recipes can be synced with others using external tools like git repositories, nextcloud or many other services.</p>
     <p xml:lang="ca">Les receptes es poden sincronitzar amb altres usant eines externes com repositoris git, nextcloud o molts altres serveis.</p>
     <p xml:lang="ca-valencia">Les receptes es poden sincronitzar amb altres usant eines externes com repositoris git, nextcloud o molts altres serveis.</p>
+    <p xml:lang="de">Abgleich von Rezepten mit externen Diensten wie Git-Quelltextarchiven, Nextcloud und anderen ist möglich.</p>
     <p xml:lang="en-GB">Recipes can be synced with others using external tools like git repositories, nextcloud or many other services.</p>
     <p xml:lang="es">Las recetas se pueden sincronizar usando herramientas externas, como repositorios git, nextcloud y otros servicios.</p>
     <p xml:lang="fr">Les recettes peuvent être synchronisées avec d'autres utilisant des outils externes, comme des dépôts « git », « Nextcloud » ou de nombreux autres services.</p>
