@@ -256,6 +256,10 @@ void MainWindow::newRecipe()
 void MainWindow::showRandomRecipe()
 {
     QHash<QString, QString> map = m_scanner->parsedFileNameTitleMap();
+    if (map.isEmpty()) {
+        notifyStatusBar("No recipe!");
+        return;
+    }
     auto iterator = map.keyBegin();
     std::advance(iterator, QRandomGenerator::global()->bounded(map.size()));
     m_activeDocument->openPath(*iterator);
