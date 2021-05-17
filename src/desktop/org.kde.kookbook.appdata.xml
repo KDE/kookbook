@@ -15,6 +15,7 @@
   <name xml:lang="fr">Kookbook</name>
   <name xml:lang="id">Kookbook</name>
   <name xml:lang="it">Kookbook</name>
+  <name xml:lang="ko">Kookbook</name>
   <name xml:lang="nl">Kookboek</name>
   <name xml:lang="nn">Kookbook</name>
   <name xml:lang="pl">Kookbook</name>
@@ -35,6 +36,7 @@
   <summary xml:lang="fr">Gestionnaire de recettes</summary>
   <summary xml:lang="id">Pengelola resep</summary>
   <summary xml:lang="it">Gestore delle ricette</summary>
+  <summary xml:lang="ko">레시피 관리자</summary>
   <summary xml:lang="nl">Beheerder van recepten</summary>
   <summary xml:lang="nn">Matoppskriftsprogram</summary>
   <summary xml:lang="pl">Zarządzanie przepisami</summary>
@@ -57,6 +59,7 @@
   <developer_name xml:lang="fr">Sune Vuorela</developer_name>
   <developer_name xml:lang="id">Sune Vuorela</developer_name>
   <developer_name xml:lang="it">Sune Vuorela</developer_name>
+  <developer_name xml:lang="ko">Sune Vuorela</developer_name>
   <developer_name xml:lang="nl">Sune Vuorela</developer_name>
   <developer_name xml:lang="nn">Sune Vuorela</developer_name>
   <developer_name xml:lang="pl">Sune Vuorela</developer_name>
@@ -77,6 +80,7 @@
     <p xml:lang="fr">Kookbook est un gestionnaire de recette minimaliste pour vous aider à gérer une collection de vos recettes préférées.</p>
     <p xml:lang="id">Kookbook adalah pengelola resep sederhana yang akan membantu kamu memelihara koleksi resep favoritmu.</p>
     <p xml:lang="it">Kookbook è un gestore di ricette semplificato che ti aiuterà a mantenere una raccolta delle tue ricette preferite.</p>
+    <p xml:lang="ko">Kookbook은 즐겨찾는 레시피 모음집을 관리할 수 있는 간단한 레시피 관리자입니다.</p>
     <p xml:lang="nl">Kookbook is een eenvoudige receptenbeheerder die u zal helpen om een verzameling van uw favoriete recepten te onderhouden.</p>
     <p xml:lang="nn">Kookbook er eit enkelt program for å halda oversikt over favoritt­oppskriftene dine.</p>
     <p xml:lang="pl">Kookbook jest prostym programem do zarządzania, który pomoże zarządzać twoimi ulubionymi przepisami.</p>
@@ -95,6 +99,7 @@
     <p xml:lang="fr">Les recettes peuvent être synchronisées avec d'autres utilisant des outils externes, comme des dépôts « git », « Nextcloud » ou de nombreux autres services.</p>
     <p xml:lang="id">Resep bisa disinkronkan dengan yang lain menggunakan alat eksternal seperti git repositories, nextcloud atau banyak layanan lainnya.</p>
     <p xml:lang="it">Le ricette possono essere sincronizzate con altri utilizzando strumenti esterni come repository git, nextcloud o molti altri servizi.</p>
+    <p xml:lang="ko">git 저장소, Nextcloud, 기타 서비스 등 외부 도구로 레시피를 동기화할 수 있습니다.</p>
     <p xml:lang="nl">Recepten kunnen gesynchroniseerd worden met andere door externe hulpmiddelen als git-opslagruimten, nextcloud of vele andere services te gebruiken.</p>
     <p xml:lang="nn">Du kan synkronisera oppskriftene med andre via eksterne verktøy, som Git-depot, Nextcloud og andre tenester.</p>
     <p xml:lang="pl">Przepisy można synchronizować z innymi przy użyciu zewnętrznych narzędzi takich jak repozytoria git, nextcloud oraz wiele innych usług.</p>
