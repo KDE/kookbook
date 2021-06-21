@@ -10,6 +10,7 @@
   <name xml:lang="ca-valencia">Kookbook</name>
   <name xml:lang="cs">Kookbook</name>
   <name xml:lang="de">Kookbook</name>
+  <name xml:lang="el">Kookbook</name>
   <name xml:lang="en-GB">Kookbook</name>
   <name xml:lang="es">Kookbook</name>
   <name xml:lang="fr">Kookbook</name>
@@ -31,6 +32,7 @@
   <summary xml:lang="ca-valencia">Gestor de receptes</summary>
   <summary xml:lang="cs">Správce receptů</summary>
   <summary xml:lang="de">Rezeptverwaltung</summary>
+  <summary xml:lang="el">Διαχειριστής συνταγών</summary>
   <summary xml:lang="en-GB">Recipe manager</summary>
   <summary xml:lang="es">Gestor de recetas</summary>
   <summary xml:lang="fr">Gestionnaire de recettes</summary>
@@ -54,6 +56,7 @@
   <developer_name xml:lang="ca-valencia">Sune Vuorela</developer_name>
   <developer_name xml:lang="cs">Sune Vuorela</developer_name>
   <developer_name xml:lang="de">Sune Vuorela</developer_name>
+  <developer_name xml:lang="el">Sune Vuorela</developer_name>
   <developer_name xml:lang="en-GB">Sune Vuorela</developer_name>
   <developer_name xml:lang="es">Sune Vuorela</developer_name>
   <developer_name xml:lang="fr">Sune Vuorela</developer_name>
@@ -75,6 +78,7 @@
     <p xml:lang="ca">El Kookbook és un gestor simplista de receptes que ajuda a mantenir una col·lecció amb les receptes preferides.</p>
     <p xml:lang="ca-valencia">El Kookbook és un gestor simplista de receptes que ajuda a mantindre una col·lecció amb les receptes preferides.</p>
     <p xml:lang="de">Kookbook ist eine einfache Rezeptverwaltung für Ihre gesammelten Lieblingsrezepte.</p>
+    <p xml:lang="el">Το Kookbook είναι ένα απλουστευτικός διαχειριστής συνταγών που θα σας βοηθήσει να υποστηρίξετε τη συλλογή με τις αγαπημένες σας συνταγές.</p>
     <p xml:lang="en-GB">Kookbook is a simplistic recipe manager that will help you to maintain a collection of your favourite recipes.</p>
     <p xml:lang="es">Kookbook es un sencillo gestor de recetas que le ayudará a mantener una colección con sus recetas favoritas.</p>
     <p xml:lang="fr">Kookbook est un gestionnaire de recette minimaliste pour vous aider à gérer une collection de vos recettes préférées.</p>
@@ -94,6 +98,7 @@
     <p xml:lang="ca">Les receptes es poden sincronitzar amb altres usant eines externes com repositoris git, nextcloud o molts altres serveis.</p>
     <p xml:lang="ca-valencia">Les receptes es poden sincronitzar amb altres usant eines externes com repositoris git, nextcloud o molts altres serveis.</p>
     <p xml:lang="de">Abgleich von Rezepten mit externen Diensten wie Git-Quelltextarchiven, Nextcloud und anderen ist möglich.</p>
+    <p xml:lang="el">Οι συνταγές μπορούν να συγχρονίζονται με άλλες με χρήση εξωτερικών εργαλείων όπως τα αποθετήρια git, το nextcloud ή διάφορες άλλες υπηρεσίες.</p>
     <p xml:lang="en-GB">Recipes can be synced with others using external tools like git repositories, nextcloud or many other services.</p>
     <p xml:lang="es">Las recetas se pueden sincronizar usando herramientas externas, como repositorios git, nextcloud y otros servicios.</p>
     <p xml:lang="fr">Les recettes peuvent être synchronisées avec d'autres utilisant des outils externes, comme des dépôts « git », « Nextcloud » ou de nombreux autres services.</p>
