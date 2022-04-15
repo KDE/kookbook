@@ -28,8 +28,10 @@
   <name xml:lang="sk">Kookbook</name>
   <name xml:lang="sl">Kookbook</name>
   <name xml:lang="sv">Kokbok</name>
+  <name xml:lang="tr">Kookbook</name>
   <name xml:lang="uk">Kookbook</name>
   <name xml:lang="x-test">xxKookbookxx</name>
+  <name xml:lang="zh-CN">Kookbook</name>
   <summary>Recipe manager</summary>
   <summary xml:lang="ca">Gestor de receptes</summary>
   <summary xml:lang="ca-valencia">Gestor de receptes</summary>
@@ -53,8 +55,10 @@
   <summary xml:lang="sk">Správca receptov</summary>
   <summary xml:lang="sl">Upravljalnik receptov</summary>
   <summary xml:lang="sv">Recepthanterare</summary>
+  <summary xml:lang="tr">Tarif yöneticisi</summary>
   <summary xml:lang="uk">Програма для керування рецептами</summary>
   <summary xml:lang="x-test">xxRecipe managerxx</summary>
+  <summary xml:lang="zh-CN">食谱管理器</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <developer_name>Sune Vuorela</developer_name>
@@ -80,8 +84,10 @@
   <developer_name xml:lang="sk">Sune Vuorela</developer_name>
   <developer_name xml:lang="sl">Sune Vuorela</developer_name>
   <developer_name xml:lang="sv">Sune Vuorela</developer_name>
+  <developer_name xml:lang="tr">Sune Vuorela</developer_name>
   <developer_name xml:lang="uk">Sune Vuorela</developer_name>
   <developer_name xml:lang="x-test">xxSune Vuorelaxx</developer_name>
+  <developer_name xml:lang="zh-CN">Sune Vuorela</developer_name>
   <description>
     <p>Kookbook is a simplistic recipe manager that will help you to maintain a collection of your favorite recipes.</p>
     <p xml:lang="ca">El Kookbook és un gestor simplista de receptes que ajuda a mantenir una col·lecció amb les receptes preferides.</p>
@@ -104,8 +110,10 @@
     <p xml:lang="pt-BR">O Kookbook é um gerenciador de receitas simples que o ajudará a manter uma coleção de suas receitas favoritas.</p>
     <p xml:lang="sl">Kookbook je poenostavljen upravljalnik receptov, ki vam bo pomagal ohranjati zbirko vaših najljubših receptov.</p>
     <p xml:lang="sv">Kokbok är en naiv recepthanterare som hjälper till att hantera en samling favoritrecept.</p>
+    <p xml:lang="tr">Kookbook, favori yemek tarifleriniz koleksiyonunu yönetmenize yardımcı olacak gerçekçi bir tarif yöneticisidir.</p>
     <p xml:lang="uk">Kookbook — проста програма для керування записами рецептів, яка допоможе вам працювати зі збіркою ваших улюблених рецептів.</p>
     <p xml:lang="x-test">xxKookbook is a simplistic recipe manager that will help you to maintain a collection of your favorite recipes.xx</p>
+    <p xml:lang="zh-CN">Kookbook 是一个简单化的食谱管理器，可以帮助您维护您喜欢的食谱集合。</p>
     <p>Recipes can be synced with others using external tools like git repositories, nextcloud or many other services.</p>
     <p xml:lang="ca">Les receptes es poden sincronitzar amb altres usant eines externes com repositoris git, nextcloud o molts altres serveis.</p>
     <p xml:lang="ca-valencia">Les receptes es poden sincronitzar amb altres usant eines externes com repositoris git, nextcloud o molts altres serveis.</p>
@@ -127,7 +135,9 @@
     <p xml:lang="pt-BR">As receitas podem ser sincronizadas com outros usando ferramentas externas como repositórios git, nextcloud ou muitos outros serviços.</p>
     <p xml:lang="sl">Recepte lahko sinhronizirate z drugimi z zunanjimi orodji, kot so skladišča git, nextcloud ali številnih drugih storitve.</p>
     <p xml:lang="sv">Recept kan synkroniseras med andra genom att använda externa verktyg som git-arkiv, nextcloud eller många andra tjänster.</p>
+    <p xml:lang="tr">Tarifler başka araçlarla eşzamanlanabilir; örneğin, git depoları, Nextcloud veya diğer hizmetler.</p>
     <p xml:lang="uk">Рецепти можна синхронізувати із іншими джерелами за допомогою зовнішніх інструментів, зокрема сховищ git, nextcloud або багатьох інших служб.</p>
     <p xml:lang="x-test">xxRecipes can be synced with others using external tools like git repositories, nextcloud or many other services.xx</p>
+    <p xml:lang="zh-CN">食谱可通过外部工具同步，如 git 仓库、nextcloud 或其他许多服务。</p>
   </description>
 </component>
