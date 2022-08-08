@@ -44,6 +44,7 @@
 #include <QSettings>
 #include <QAbstractItemModel>
 #include <QRandomGenerator>
+#include <QStandardPaths>
 
 auto mkdock(const QString& title) {
     auto dock = std::make_unique<QDockWidget>(title);

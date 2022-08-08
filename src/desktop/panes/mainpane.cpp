@@ -40,7 +40,9 @@ MainPane::MainPane(QWidget* parent) : PaneBase(parent)
     textView->setReadOnly(true);
     textView->setDocument(m_document.get());
     textView->setOpenExternalLinks(true);
-    connect(textView.get(), QOverload<const QString&>::of(&QTextBrowser::highlighted), this, &MainPane::notifySimple);
+    connect(textView.get(), QOverload<const QUrl&>::of(&QTextBrowser::highlighted), this, [this](const QUrl &url) {
+        Q_EMIT notifySimple(url.toString());
+    });
 
     m_textView = textView.get();
     layout->addWidget(textView.release());

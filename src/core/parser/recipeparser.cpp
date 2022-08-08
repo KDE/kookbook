@@ -82,7 +82,7 @@ RecipeParser::ParsedRecipe RecipeParser::parseRecipe(QIODevice* input)
                     if (!value.isEmpty())
                     {
                         if (key == QLatin1String("tags")) {
-                            QStringList tags = value.split(',',QString::SkipEmptyParts);
+                            QStringList tags = value.split(',',Qt::SkipEmptyParts);
                             for(QString tag : qAsConst(tags)) {
                                 result.tags.push_back(tag.trimmed());
                             }
