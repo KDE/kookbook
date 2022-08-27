@@ -25,6 +25,7 @@
 
 #include "mainwindow.h"
 #include <memory>
+#include <QApplication>
 #include <QHBoxLayout>
 #include <QDockWidget>
 #include <QToolBar>
@@ -196,6 +197,13 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         auto action = toolbar->addAction(QIcon::fromTheme("document-print"),"Print current recipe", m_mainPane, &MainPane::print);
         action->setShortcut(QKeySequence(QKeySequence::Print));
     }
+    {
+        auto action = new QAction("Quit", this);
+        action->setShortcut(QKeySequence::Quit);
+        addAction(action);
+        connect(action, &QAction::triggered, qApp, &QApplication::quit);
+    }
+
     toolbar->addAction(QIcon::fromTheme("randomize"), "Display random recipe", this, &MainWindow::showRandomRecipe);
     toolbar->addAction(QIcon::fromTheme("document-print-preview"),"Print preview current recipe", m_mainPane, &MainPane::printPreview);
     toolbar->toggleViewAction()->setEnabled(false);
