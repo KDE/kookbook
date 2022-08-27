@@ -190,7 +190,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     }
     {
         auto action = toolbar->addAction(QIcon::fromTheme("edit-entry"),"Edit current recipe", this, &MainWindow::editActiveRecipe);
-        action->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_E));
+        action->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_E));
     }
     {
         auto action = toolbar->addAction(QIcon::fromTheme("document-print"),"Print current recipe", m_mainPane, &MainPane::print);
