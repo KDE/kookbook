@@ -275,7 +275,7 @@ void MainWindow::setCurrentFolder(const QString& folder)
 {
     m_currentFolder = folder;
 
-    clear();
+    Q_EMIT clear();
     m_activeDocument->openPath(QString());
     m_fsPane->setRootPath(folder);
     notifyStatusBar(QString("Parsing %1").arg(folder));
