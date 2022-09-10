@@ -36,7 +36,7 @@ void DirModel::setPath(const QString& newPath)
     QString oldPath = m_sourceModel->path();
     if (oldPath != newPath) {
         m_sourceModel->setPath(newPath);
-        emit pathChanged();
+        Q_EMIT pathChanged();
     }
 }
 
@@ -66,20 +66,20 @@ void DirModel::setFilter(const QString& newFilter)
     if (m_filter != newFilter) {
         m_filter = newFilter;
         m_filterModel->setFilterFixedString(newFilter);
-        emit filterChanged();
+        Q_EMIT filterChanged();
     }
 }
 
 void DirModel::cd(const QString& path)
 {
     m_sourceModel->cd(path);
-    emit pathChanged();
+    Q_EMIT pathChanged();
 }
 
 void DirModel::cdUp()
 {
     m_sourceModel->cdUp();
-    emit pathChanged();
+    Q_EMIT pathChanged();
 }
 
 DirModel::Mode DirModel::mode() const
@@ -91,7 +91,7 @@ void DirModel::setMode(DirModel::Mode mode)
 {
     if (mode != m_sourceModel->mode()) {
         m_sourceModel->setMode(mode);
-        emit modeChanged();
+        Q_EMIT modeChanged();
     }
 
 }

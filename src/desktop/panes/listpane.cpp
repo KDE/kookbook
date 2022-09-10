@@ -47,7 +47,7 @@ ListPane::ListPane(QWidget* parent) : QWidget(parent){
     connect(m_view,&QListView::clicked, this, [this](const QModelIndex& idx) {
         QString data = idx.data(Qt::UserRole + 1).toString();
         if (!data.isEmpty()) {
-            emit this->fileSelected(data);
+            Q_EMIT this->fileSelected(data);
         }
     });
     m_view->setModel(m_filter.get());

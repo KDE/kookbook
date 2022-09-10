@@ -119,7 +119,7 @@ void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultT
     m_parsedFileNameTitleMap = titlemap;
     titlemap = {}; // ensure to decrease refcount
     m_titleList = std::move(titlelist);
-    emit dataUpdatedInternal();
+    Q_EMIT dataUpdatedInternal();
     m_running = false;
 }
 

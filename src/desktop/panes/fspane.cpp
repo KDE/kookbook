@@ -85,7 +85,7 @@ FsPane::FsPane(QWidget* parent) : QWidget(parent)
     connect(tree.get(), &QTreeView::clicked, [this] (const QModelIndex& idx)
     {
         auto var = idx.data(QFileSystemModel::FilePathRole);
-        emit this->fileSelected(var.toString());
+        Q_EMIT this->fileSelected(var.toString());
     });
 
     m_tree = tree.get();

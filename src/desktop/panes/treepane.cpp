@@ -34,7 +34,7 @@ TreePane::TreePane(QWidget* parent) : QWidget(parent){
     connect(m_view,&QTreeView::clicked, this, [this](const QModelIndex& idx) {
         QString data = idx.data(Qt::UserRole + 1).toString();
         if (!data.isEmpty()) {
-            emit this->fileSelected(data);
+            Q_EMIT this->fileSelected(data);
         }
     });
 }

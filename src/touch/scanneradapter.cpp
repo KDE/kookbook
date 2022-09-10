@@ -57,7 +57,7 @@ void ScannerAdapter::setFilter(const QString& filter)
     if (filter != m_filterFixedString) {
         m_titleList->setFilterFixedString(filter);
         m_filterFixedString = filter;
-        emit filterChanged();
+        Q_EMIT filterChanged();
     }
 }
 
@@ -66,7 +66,7 @@ void ScannerAdapter::setRootPath(const QString& rootPath)
     if (m_scanner->rootPath() != rootPath)
     {
         m_scanner->setRootPath(rootPath);
-        emit rootPathChanged();
+        Q_EMIT rootPathChanged();
         QSettings s;
         s.beginGroup("General");
         if (QFile::exists(rootPath)) {

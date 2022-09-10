@@ -43,7 +43,7 @@ void DocumentLoader::setPath(const QString& path)
 {
     if (path != m_path || path.isEmpty()) {
         m_path = path;
-        emit changed();
+        Q_EMIT changed();
     }
 }
 
