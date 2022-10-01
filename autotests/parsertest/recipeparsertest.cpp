@@ -79,12 +79,12 @@ void RecipeParserTest::testParseRecipe_data()
     QTest::addColumn<RecipeParser::ParsedRecipe>("result");
 
     QTest::newRow("empty") << QByteArray() << false << RecipeParser::ParsedRecipe{};
-    QTest::newRow("justtitle") << QByteArray("# This is title\n") << false << RecipeParser::ParsedRecipe{"This is title",{},{}};
-    QTest::newRow("justags") << QByteArray("# Title\n### Ingredienst\n### Directio \n### Metadata\ntags: horse, cow, sheep") << false << RecipeParser::ParsedRecipe{"Title",{},{"horse","cow","sheep"}};
-    QTest::newRow("emptytags") << QByteArray("# Title\n### Ingredienst\n### Directio \n### Metadata\ntags: ") << false << RecipeParser::ParsedRecipe{"Title",{},{}};
+    QTest::newRow("justtitle") << QByteArray("# This is title\n") << false << RecipeParser::ParsedRecipe{"This is title",{},{},{}};
+    QTest::newRow("justags") << QByteArray("# Title\n### Ingredienst\n### Directio \n### Metadata\ntags: horse, cow, sheep") << false << RecipeParser::ParsedRecipe{"Title",{},{"horse","cow","sheep"},{}};
+    QTest::newRow("emptytags") << QByteArray("# Title\n### Ingredienst\n### Directio \n### Metadata\ntags: ") << false << RecipeParser::ParsedRecipe{"Title",{},{}, {}};
     QTest::newRow("twoauthors") << QByteArray("# Title\n### Ingredienst\n### Directio \n### Metadata\nauthor: horse\nauthor:cow") << false << RecipeParser::ParsedRecipe{"Title",{},{},{{"author",{"horse","cow"}}}};
     QTest::newRow("emptyauthors") << QByteArray("# Title\n### Ingredienst\n### Directio \n### Metadata\nauthor: \nauthor:") << false << RecipeParser::ParsedRecipe{"Title",{},{},{}};
-    QTest::newRow("sometext") << QByteArray("# Title\n### Ingredienst\n\n\n * 1 kg mel\n * 3 l mælk\nunparsablestuff\n### Directio \n do stuff") << false << RecipeParser::ParsedRecipe{"Title",{{"1","kg","mel"},{"3","l","mælk"}},{}};
+    QTest::newRow("sometext") << QByteArray("# Title\n### Ingredienst\n\n\n * 1 kg mel\n * 3 l mælk\nunparsablestuff\n### Directio \n do stuff") << false << RecipeParser::ParsedRecipe{"Title",{{"1","kg","mel"},{"3","l","mælk"}},{},{}};
     QTest::newRow("couscousfile") << QByteArray("couscous.recipe.md") << true << RecipeParser::ParsedRecipe{"CousCous",{{"3","dl","kraftig boullion"},{"1.5","dl","cous cous"},{"1","spsk","vineddike"}, {"1","spsk","olivenolie"}},{},{{"author",{"Sune Vuorela <sune@vuorela.dk>"}}}};
     QTest::newRow("two ingredients sections") << QByteArray("twoingredients.recipe.md") << true << RecipeParser::ParsedRecipe{"CousCous",{{"3","dl","kraftig boullion"},{"1.5","dl","cous cous"},{"1","spsk","vineddike"}, {"1","spsk","olivenolie"}},{},{{"author",{"Sune Vuorela <sune@vuorela.dk>"}}}};
 
