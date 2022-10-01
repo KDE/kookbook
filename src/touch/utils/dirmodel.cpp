@@ -177,6 +177,7 @@ QVariant DirModelModel::data(const QModelIndex& index, int role) const
 
 int DirModelModel::rowCount(const QModelIndex& parent) const
 {
+    Q_UNUSED(parent);
     return m_files.count();
 }
 

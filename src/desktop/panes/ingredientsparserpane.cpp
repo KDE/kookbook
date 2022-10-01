@@ -31,7 +31,7 @@
 #include <QAction>
 #include <QLabel>
 
-IngredientsParserPane::IngredientsParserPane ( QWidget* parent )
+IngredientsParserPane::IngredientsParserPane ( QWidget* parent ) : QWidget(parent)
 {
     auto edit = std::make_unique<QLineEdit>();
     edit->setPlaceholderText("Search");

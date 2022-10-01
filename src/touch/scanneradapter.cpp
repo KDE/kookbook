@@ -31,7 +31,7 @@
 #include <QSettings>
 #include <QStandardPaths>
 
-ScannerAdapter::ScannerAdapter(QObject* parent) : m_scanner(std::make_unique<Scanner>()), m_titleList(std::make_unique<QSortFilterProxyModel>())
+ScannerAdapter::ScannerAdapter(QObject* parent) : QObject(parent), m_scanner(std::make_unique<Scanner>()), m_titleList(std::make_unique<QSortFilterProxyModel>())
 {
     m_titleList->setFilterCaseSensitivity(Qt::CaseInsensitive);
     connect(m_scanner.get(), &Scanner::dataUpdated, this, [&]() {

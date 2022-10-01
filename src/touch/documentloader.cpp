@@ -26,7 +26,7 @@
 #include "documentloader.h"
 #include "recipedocument.h"
 
-DocumentLoader::DocumentLoader(QObject* parent)
+DocumentLoader::DocumentLoader(QObject* parent) : QObject(parent)
 {
 }
 

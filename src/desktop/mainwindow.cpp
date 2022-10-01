@@ -50,7 +50,7 @@
 auto mkdock(const QString& title) {
     auto dock = std::make_unique<QDockWidget>(title);
     dock->setObjectName(title);
-    return std::move(dock);
+    return dock;
 }
 
 // QDesktopServices::openUrl just gives whatever is available to open it

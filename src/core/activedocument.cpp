@@ -27,7 +27,7 @@
 #include <QFileSystemWatcher>
 #include <QDebug>
 
-ActiveDocument::ActiveDocument(QObject* parent)
+ActiveDocument::ActiveDocument(QObject* parent) : QObject(parent)
 {
     m_watcher = std::make_unique<QFileSystemWatcher>();
     connect(m_watcher.get(), &QFileSystemWatcher::fileChanged, this, &ActiveDocument::checkedReload);

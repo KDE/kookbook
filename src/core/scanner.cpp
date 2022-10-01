@@ -91,7 +91,7 @@ void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultT
             }
             result->appendRow(line.release());
         }
-        return std::move(result);
+        return result;
     };
 
     auto parseding = buildTreeFromMap(ingredients);
