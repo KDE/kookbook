@@ -16,6 +16,7 @@
   <name xml:lang="eu">Kookbook</name>
   <name xml:lang="fi">Kookbook</name>
   <name xml:lang="fr">Kookbook</name>
+  <name xml:lang="gl">Kookbook</name>
   <name xml:lang="hi">कुकबुक</name>
   <name xml:lang="id">Kookbook</name>
   <name xml:lang="it">Kookbook</name>
@@ -44,6 +45,7 @@
   <summary xml:lang="eu">Errezeta kudeatzailea</summary>
   <summary xml:lang="fi">Reseptinhallintaohjelma</summary>
   <summary xml:lang="fr">Gestionnaire de recettes</summary>
+  <summary xml:lang="gl">Xestor de receitas</summary>
   <summary xml:lang="hi">पाक विधि प्रबंधक</summary>
   <summary xml:lang="id">Pengelola resep</summary>
   <summary xml:lang="it">Gestore delle ricette</summary>
@@ -74,6 +76,7 @@
   <developer_name xml:lang="eu">Sune Vuorela</developer_name>
   <developer_name xml:lang="fi">Sune Vuorela</developer_name>
   <developer_name xml:lang="fr">Sune Vuorela</developer_name>
+  <developer_name xml:lang="gl">Sune Vuorela</developer_name>
   <developer_name xml:lang="hi">सुने वुओरेला</developer_name>
   <developer_name xml:lang="id">Sune Vuorela</developer_name>
   <developer_name xml:lang="it">Sune Vuorela</developer_name>
@@ -102,6 +105,7 @@
     <p xml:lang="eu">Kookbook zure errezeta gogokoenen bilduma bat mantentzen lagunduko dizun errezeta-kudeatzaile sinplista bat da.</p>
     <p xml:lang="fi">Kookbook on yksinkertainen reseptinhallintaohjelma, jolla voi ylläpitää suosikkireseptiensä kokoelmaa.</p>
     <p xml:lang="fr">Kookbook est un gestionnaire de recette minimaliste pour vous aider à gérer une collection de vos recettes préférées.</p>
+    <p xml:lang="gl">Kookbook é un xestor de receitas simplista que lle axudará a manter a súa colección de receitas favoritas.</p>
     <p xml:lang="hi">कुकबुक एक सरल पाक विधि प्रबंधक है, जो आपको अपनी पसंदीदा विधियों को संग्रहित करने में सहायता करता है।</p>
     <p xml:lang="id">Kookbook adalah pengelola resep sederhana yang akan membantu kamu memelihara koleksi resep favoritmu.</p>
     <p xml:lang="it">Kookbook è un gestore di ricette semplificato che ti aiuterà a mantenere una raccolta delle tue ricette preferite.</p>
@@ -129,6 +133,7 @@
     <p xml:lang="eu">Errezetak beste batzuekin parteka daitezke kanpoko tresnak erabiliz, hala hola, git gordetegiak, nextcloud edo beste zerbitzu asko.</p>
     <p xml:lang="fi">Reseptejä voi synkronoida ulkoisten palvelujen kuten Git-tietovarastojen, Nextcloudin ja monien muiden kanssa.</p>
     <p xml:lang="fr">Les recettes peuvent être synchronisées avec d'autres utilisant des outils externes, comme des dépôts « git », « Nextcloud » ou de nombreux autres services.</p>
+    <p xml:lang="gl">As receitas poden sincronizarse con outras persoas mediante ferramentas externas como repositorios de Git, NextCloud, ou outros moitos servizos.</p>
     <p xml:lang="hi">पाक विधियाँ अन्य सेवाओं जैसे की नेक्सटक्लाउड, गिट इत्यादि से आयातित हो सकती हैं।</p>
     <p xml:lang="id">Resep bisa disinkronkan dengan yang lain menggunakan alat eksternal seperti git repositories, nextcloud atau banyak layanan lainnya.</p>
     <p xml:lang="it">Le ricette possono essere sincronizzate con altri utilizzando strumenti esterni come repository git, nextcloud o molti altri servizi.</p>
