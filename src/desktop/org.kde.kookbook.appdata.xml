@@ -12,6 +12,7 @@
   <name xml:lang="de">Kookbook</name>
   <name xml:lang="el">Kookbook</name>
   <name xml:lang="en-GB">Kookbook</name>
+  <name xml:lang="eo">Kookbook</name>
   <name xml:lang="es">Kookbook</name>
   <name xml:lang="eu">Kookbook</name>
   <name xml:lang="fi">Kookbook</name>
@@ -41,6 +42,7 @@
   <summary xml:lang="de">Rezeptverwaltung</summary>
   <summary xml:lang="el">Διαχειριστής συνταγών</summary>
   <summary xml:lang="en-GB">Recipe manager</summary>
+  <summary xml:lang="eo">Receptmastrumilo</summary>
   <summary xml:lang="es">Gestor de recetas</summary>
   <summary xml:lang="eu">Errezeta kudeatzailea</summary>
   <summary xml:lang="fi">Reseptinhallintaohjelma</summary>
@@ -72,6 +74,7 @@
   <developer_name xml:lang="de">Sune Vuorela</developer_name>
   <developer_name xml:lang="el">Sune Vuorela</developer_name>
   <developer_name xml:lang="en-GB">Sune Vuorela</developer_name>
+  <developer_name xml:lang="eo">Sune Vuorela</developer_name>
   <developer_name xml:lang="es">Sune Vuorela</developer_name>
   <developer_name xml:lang="eu">Sune Vuorela</developer_name>
   <developer_name xml:lang="fi">Sune Vuorela</developer_name>
