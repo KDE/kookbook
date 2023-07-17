@@ -104,6 +104,7 @@
     <p xml:lang="de">Kookbook ist eine einfache Rezeptverwaltung für Ihre gesammelten Lieblingsrezepte.</p>
     <p xml:lang="el">Το Kookbook είναι ένα απλουστευτικός διαχειριστής συνταγών που θα σας βοηθήσει να υποστηρίξετε τη συλλογή με τις αγαπημένες σας συνταγές.</p>
     <p xml:lang="en-GB">Kookbook is a simplistic recipe manager that will help you to maintain a collection of your favourite recipes.</p>
+    <p xml:lang="eo">Kookbook estas simpla administranto de receptoj, kiu helpos vin konservi kolekton de viaj plej ŝatataj receptoj.</p>
     <p xml:lang="es">Kookbook es un sencillo gestor de recetas que le ayudará a mantener una colección con sus recetas favoritas.</p>
     <p xml:lang="eu">Kookbook zure errezeta gogokoenen bilduma bat mantentzen lagunduko dizun errezeta-kudeatzaile sinplista bat da.</p>
     <p xml:lang="fi">Kookbook on yksinkertainen reseptinhallintaohjelma, jolla voi ylläpitää suosikkireseptiensä kokoelmaa.</p>
@@ -132,6 +133,7 @@
     <p xml:lang="de">Abgleich von Rezepten mit externen Diensten wie Git-Quelltextarchiven, Nextcloud und anderen ist möglich.</p>
     <p xml:lang="el">Οι συνταγές μπορούν να συγχρονίζονται με άλλες με χρήση εξωτερικών εργαλείων όπως τα αποθετήρια git, το nextcloud ή διάφορες άλλες υπηρεσίες.</p>
     <p xml:lang="en-GB">Recipes can be synced with others using external tools like git repositories, nextcloud or many other services.</p>
+    <p xml:lang="eo">Receptoj povas esti sinkronigitaj kun aliaj uzante eksterajn ilojn kiel git-deponejoj, nextcloud aŭ multaj aliaj servoj.</p>
     <p xml:lang="es">Las recetas se pueden sincronizar usando herramientas externas, como repositorios git, nextcloud y otros servicios.</p>
     <p xml:lang="eu">Errezetak beste batzuekin parteka daitezke kanpoko tresnak erabiliz, hala hola, git gordetegiak, nextcloud edo beste zerbitzu asko.</p>
     <p xml:lang="fi">Reseptejä voi synkronoida ulkoisten palvelujen kuten Git-tietovarastojen, Nextcloudin ja monien muiden kanssa.</p>
