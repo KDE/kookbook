@@ -35,6 +35,7 @@
   <name xml:lang="uk">Kookbook</name>
   <name xml:lang="x-test">xxKookbookxx</name>
   <name xml:lang="zh-CN">Kookbook</name>
+  <name xml:lang="zh-TW">Kookbook</name>
   <summary>Recipe manager</summary>
   <summary xml:lang="ca">Gestor de receptes</summary>
   <summary xml:lang="ca-valencia">Gestor de receptes</summary>
@@ -65,6 +66,7 @@
   <summary xml:lang="uk">Програма для керування рецептами</summary>
   <summary xml:lang="x-test">xxRecipe managerxx</summary>
   <summary xml:lang="zh-CN">食谱管理器</summary>
+  <summary xml:lang="zh-TW">食譜管理員</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <developer_name>Sune Vuorela</developer_name>
@@ -97,6 +99,7 @@
   <developer_name xml:lang="uk">Sune Vuorela</developer_name>
   <developer_name xml:lang="x-test">xxSune Vuorelaxx</developer_name>
   <developer_name xml:lang="zh-CN">Sune Vuorela</developer_name>
+  <developer_name xml:lang="zh-TW">Sune Vuorela</developer_name>
   <description>
     <p>Kookbook is a simplistic recipe manager that will help you to maintain a collection of your favorite recipes.</p>
     <p xml:lang="ca">El Kookbook és un gestor simplista de receptes que ajuda a mantenir una col·lecció amb les receptes preferides.</p>
@@ -127,6 +130,7 @@
     <p xml:lang="uk">Kookbook — проста програма для керування записами рецептів, яка допоможе вам працювати зі збіркою ваших улюблених рецептів.</p>
     <p xml:lang="x-test">xxKookbook is a simplistic recipe manager that will help you to maintain a collection of your favorite recipes.xx</p>
     <p xml:lang="zh-CN">Kookbook 是一个简单化的食谱管理器，可以帮助您维护您喜欢的食谱集合。</p>
+    <p xml:lang="zh-TW">Kookbook 是一個簡潔的食譜管理員，幫助您維護最愛的食譜的收藏。</p>
     <p>Recipes can be synced with others using external tools like git repositories, nextcloud or many other services.</p>
     <p xml:lang="ca">Les receptes es poden sincronitzar amb altres usant eines externes com repositoris git, nextcloud o molts altres serveis.</p>
     <p xml:lang="ca-valencia">Les receptes es poden sincronitzar amb altres utilitzant eines externes com repositoris git, nextcloud o molts altres serveis.</p>
@@ -156,6 +160,7 @@
     <p xml:lang="uk">Рецепти можна синхронізувати із іншими джерелами за допомогою зовнішніх інструментів, зокрема сховищ git, nextcloud або багатьох інших служб.</p>
     <p xml:lang="x-test">xxRecipes can be synced with others using external tools like git repositories, nextcloud or many other services.xx</p>
     <p xml:lang="zh-CN">食谱可通过外部工具同步，如 git 仓库、nextcloud 或其他许多服务。</p>
+    <p xml:lang="zh-TW">食譜可以利用 git 版本庫、NextCloud 或其他服務與他人同步。</p>
   </description>
   <launchable type="desktop-id">org.kde.kookbook.desktop</launchable>
   <content_rating type="oars-1.1"/>
