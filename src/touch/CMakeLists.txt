@@ -9,4 +9,4 @@ target_link_libraries(kookbooktouch PRIVATE Qt::Qml Qt::Gui scanner parser utils
 add_subdirectory(utils)
 
 install(TARGETS kookbooktouch DESTINATION ${KDE_INSTALL_BINDIR})
-install(FILES kookbooktouch.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.kookbooktouch.desktop DESTINATION ${KDE_INSTALL_APPDIR})
