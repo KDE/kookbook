@@ -73,39 +73,12 @@
   <summary xml:lang="zh-TW">食譜管理員</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
-  <developer_name>Sune Vuorela</developer_name>
-  <developer_name xml:lang="ca">Sune Vuorela</developer_name>
-  <developer_name xml:lang="ca-valencia">Sune Vuorela</developer_name>
-  <developer_name xml:lang="cs">Sune Vuorela</developer_name>
-  <developer_name xml:lang="de">Sune Vuorela</developer_name>
-  <developer_name xml:lang="el">Sune Vuorela</developer_name>
-  <developer_name xml:lang="en-GB">Sune Vuorela</developer_name>
-  <developer_name xml:lang="eo">Sune Vuorela</developer_name>
-  <developer_name xml:lang="es">Sune Vuorela</developer_name>
-  <developer_name xml:lang="eu">Sune Vuorela</developer_name>
-  <developer_name xml:lang="fi">Sune Vuorela</developer_name>
-  <developer_name xml:lang="fr">Sune Vuorela</developer_name>
-  <developer_name xml:lang="gl">Sune Vuorela</developer_name>
-  <developer_name xml:lang="he">סון וורלה</developer_name>
-  <developer_name xml:lang="hi">सुने वुओरेला</developer_name>
-  <developer_name xml:lang="id">Sune Vuorela</developer_name>
-  <developer_name xml:lang="it">Sune Vuorela</developer_name>
-  <developer_name xml:lang="ka">Sune Vuorela</developer_name>
-  <developer_name xml:lang="ko">Sune Vuorela</developer_name>
-  <developer_name xml:lang="nl">Sune Vuorela</developer_name>
-  <developer_name xml:lang="nn">Sune Vuorela</developer_name>
-  <developer_name xml:lang="pl">Sune Vuorela</developer_name>
-  <developer_name xml:lang="pt">Sune Vuorela</developer_name>
-  <developer_name xml:lang="pt-BR">Sune Vuorela</developer_name>
-  <developer_name xml:lang="ro">Sune Vuorela</developer_name>
-  <developer_name xml:lang="sk">Sune Vuorela</developer_name>
-  <developer_name xml:lang="sl">Sune Vuorela</developer_name>
-  <developer_name xml:lang="sv">Sune Vuorela</developer_name>
-  <developer_name xml:lang="tr">Sune Vuorela</developer_name>
-  <developer_name xml:lang="uk">Sune Vuorela</developer_name>
-  <developer_name xml:lang="x-test">xxSune Vuorelaxx</developer_name>
-  <developer_name xml:lang="zh-CN">Sune Vuorela</developer_name>
-  <developer_name xml:lang="zh-TW">Sune Vuorela</developer_name>
+  <developer id="kde.org">
+    <name>The KDE Community</name>
+    <url>https://kde.org</url>
+  </developer>
+  <url type="homepage">https://apps.kde.org/kookbook/</url>
+  <url type="vcs-browser">https://invent.kde.org/utilities/kookbook/</url>
   <description>
     <p>Kookbook is a simplistic recipe manager that will help you to maintain a collection of your favorite recipes.</p>
     <p xml:lang="ca">El Kookbook és un gestor simplista de receptes que ajuda a mantenir una col·lecció amb les receptes preferides.</p>
