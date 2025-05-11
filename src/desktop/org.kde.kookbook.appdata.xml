@@ -6,6 +6,7 @@
 <component type="desktop-application">
   <id>org.kde.kookbook</id>
   <name>Kookbook</name>
+  <name xml:lang="ar">كتاب الطبخ</name>
   <name xml:lang="ca">Kookbook</name>
   <name xml:lang="ca-valencia">Kookbook</name>
   <name xml:lang="cs">Kookbook</name>
@@ -39,6 +40,7 @@
   <name xml:lang="zh-CN">Kookbook</name>
   <name xml:lang="zh-TW">Kookbook</name>
   <summary>Recipe manager</summary>
+  <summary xml:lang="ar">مدير الوصفات</summary>
   <summary xml:lang="ca">Gestor de receptes</summary>
   <summary xml:lang="ca-valencia">Gestor de receptes</summary>
   <summary xml:lang="cs">Správce receptů</summary>
@@ -81,6 +83,7 @@
   <url type="vcs-browser">https://invent.kde.org/utilities/kookbook/</url>
   <description>
     <p>Kookbook is a simplistic recipe manager that will help you to maintain a collection of your favorite recipes.</p>
+    <p xml:lang="ar">كتاب الطبخ هو مدير وصفات مبسط يساعدك على الاحتفاظ بمجموعة من وصفاتك المفضلة.</p>
     <p xml:lang="ca">El Kookbook és un gestor simplista de receptes que ajuda a mantenir una col·lecció amb les receptes preferides.</p>
     <p xml:lang="ca-valencia">Kookbook és un gestor simplista de receptes que ajuda a mantindre una col·lecció amb les receptes preferides.</p>
     <p xml:lang="de">Kookbook ist eine einfache Rezeptverwaltung für Ihre gesammelten Lieblingsrezepte.</p>
@@ -113,6 +116,7 @@
     <p xml:lang="zh-CN">Kookbook 是一个简单化的食谱管理器，可以帮助您维护您喜欢的食谱集合。</p>
     <p xml:lang="zh-TW">Kookbook 是一個簡潔的食譜管理員，幫助您維護最愛的食譜的收藏。</p>
     <p>Recipes can be synced with others using external tools like git repositories, nextcloud or many other services.</p>
+    <p xml:lang="ar">يمكن مزامنة الوصفات مع الآخرين باستخدام أدوات خارجية مثل مستودعات غيِت أو نكست كلاود أو العديد من الخدمات الأخرى.</p>
     <p xml:lang="ca">Les receptes es poden sincronitzar amb altres usant eines externes com repositoris git, nextcloud o molts altres serveis.</p>
     <p xml:lang="ca-valencia">Les receptes es poden sincronitzar amb altres utilitzant eines externes com repositoris git, nextcloud o molts altres serveis.</p>
     <p xml:lang="de">Abgleich von Rezepten mit externen Diensten wie Git-Quelltextarchiven, Nextcloud und anderen ist möglich.</p>
