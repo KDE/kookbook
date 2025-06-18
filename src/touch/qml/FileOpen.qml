@@ -98,35 +98,38 @@ ListView {
     headerPositioning: ListView.PullBackHeader
     currentIndex: -1
 
-    delegate: Kirigami.BasicListItem {
-        label: display
-        icon: model.icon
+    delegate: Controls.ItemDelegate {
         highlighted: focus && ListView.isCurrentItem
+        width: ListView.view.width
+        contentItem: Kirigami.IconTitleSubtitle {
+            title: model.display
+            icon.name: model.icon
+            Rectangle {
+                width: height
+                height: parent.height * 3
+                radius: height / 2
+                color: Kirigami.Theme.backgroundColor
+
+                Kirigami.Icon {
+                    source: model.type === "folder" ? "folder-open" : "document-open"
+                    anchors.fill: parent
+                    anchors.margins: parent.height / 6
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: selected(model.fullpath)
+                }
+            }
+        }
         onClicked: {
             if(ListView.isCurrentItem) {
-                if (type === "folder") {
-                    dirmodel.cd(display)
+                if (model.type === "folder") {
+                    dirmodel.cd(model.display)
                 } else {
-                    selected(fullpath)
+                    selected(model.fullpath)
                 }
             } else {
                 currentIndex = index;
-            }
-        }
-        Rectangle {
-            width: height
-            height: parent.height * 3
-            radius: height / 2
-            color: Kirigami.Theme.backgroundColor
-
-            Kirigami.Icon {
-                source: type === "folder" ? "folder-open" : "document-open"
-                anchors.fill: parent
-                anchors.margins: parent.height / 6
-            }
-            MouseArea {
-                anchors.fill: parent
-                onClicked: selected(fullpath)
             }
         }
     }

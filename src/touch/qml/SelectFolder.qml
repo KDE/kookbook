@@ -33,7 +33,7 @@ Kirigami.ScrollablePage {
 
     id: page
     title: open.dirName
-    contextualActions: [
+    actions: [
         Kirigami.Action {
             id: showHidden
             text: qsTr("Show hidden folders")

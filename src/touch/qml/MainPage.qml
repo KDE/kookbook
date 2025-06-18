@@ -70,9 +70,8 @@ Kirigami.ScrollablePage {
         model: scanner.titleList
         currentIndex: -1
 
-        delegate: Kirigami.BasicListItem {
-            reserveSpaceForIcon: false
-            label: display
+        delegate: Controls.ItemDelegate {
+            text: display
             onClicked: {
                 var item = root.pageStack.push(Qt.resolvedUrl("Recipe.qml"))
                 item.path = path;

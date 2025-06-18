@@ -49,7 +49,7 @@ Kirigami.ApplicationWindow {
         actions: [
             Kirigami.Action {
                 text: qsTr("Refresh")
-                iconName: "view-refresh"
+                icon.name: "view-refresh"
                 onTriggered: {
                     scanner.refresh()
                     showPassiveNotification(qsTr("Refreshing"))
@@ -57,7 +57,7 @@ Kirigami.ApplicationWindow {
             },
             Kirigami.Action {
                 text: qsTr("Open cookbook")
-                iconName: "document-open-folder"
+                icon.name: "document-open-folder"
                 onTriggered: {
                     if (root.pageStack.depth > 1) {
                         root.pageStack.pop(null)
@@ -75,7 +75,7 @@ Kirigami.ApplicationWindow {
             },
             Kirigami.Action {
                 text: qsTr("Home")
-                iconName: "go-home"
+                icon.name: "go-home"
                 onTriggered: {
                     if (root.pageStack.depth > 1) {
                         root.pageStack.pop(null)
@@ -84,7 +84,7 @@ Kirigami.ApplicationWindow {
             },
             Kirigami.Action {
                 text: qsTr("Help")
-                iconName: "help-contents"
+                icon.name: "help-contents"
                 onTriggered: root.pageStack.push(Qt.resolvedUrl("Help.qml"))
             }
         ]
