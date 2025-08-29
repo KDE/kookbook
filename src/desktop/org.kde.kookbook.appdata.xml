@@ -25,6 +25,7 @@
   <name xml:lang="it">Kookbook</name>
   <name xml:lang="ka">Kookbook</name>
   <name xml:lang="ko">Kookbook</name>
+  <name xml:lang="lv">Kookbook</name>
   <name xml:lang="nl">Kookboek</name>
   <name xml:lang="nn">Kookbook</name>
   <name xml:lang="pl">Kookbook</name>
@@ -59,6 +60,7 @@
   <summary xml:lang="it">Gestore delle ricette</summary>
   <summary xml:lang="ka">რეცეპტების მმართველი</summary>
   <summary xml:lang="ko">레시피 관리자</summary>
+  <summary xml:lang="lv">Recepšu pārvaldnieks</summary>
   <summary xml:lang="nl">Beheerder van recepten</summary>
   <summary xml:lang="nn">Matoppskriftsprogram</summary>
   <summary xml:lang="pl">Zarządzanie przepisami</summary>
@@ -101,6 +103,7 @@
     <p xml:lang="it">Kookbook è un gestore di ricette semplificato che ti aiuterà a mantenere una raccolta delle tue ricette preferite.</p>
     <p xml:lang="ka">Kookbook არის რეცეპტების მარტივი მმართველი, რომელიც დაგეხმარებათ თქვენი საყვარელი რეცეპტების კოლექცია შეინახოთ .</p>
     <p xml:lang="ko">Kookbook은 즐겨찾는 레시피 모음집을 관리할 수 있는 간단한 레시피 관리자입니다.</p>
+    <p xml:lang="lv">„Kookbook“ ir vienkāršs reklāmu pārvaldnieks, kas palīdz uzturēt mīļāko recepšu kolekciju.</p>
     <p xml:lang="nl">Kookbook is een eenvoudige receptenbeheerder die u zal helpen om een verzameling van uw favoriete recepten te onderhouden.</p>
     <p xml:lang="nn">Kookbook er eit enkelt program for å halda oversikt over favoritt­oppskriftene dine.</p>
     <p xml:lang="pl">Kookbook jest prostym programem do zarządzania, który pomoże zarządzać twoimi ulubionymi przepisami.</p>
@@ -134,6 +137,7 @@
     <p xml:lang="it">Le ricette possono essere sincronizzate con altri utilizzando strumenti esterni come repository git, nextcloud o molti altri servizi.</p>
     <p xml:lang="ka">რეცეპტების სინქრონიზაცია შესაძლებელია გარე ხელსაწყოების გამოყენებითაც. მაგ. git რეპოზიტორიები, nextcloud და სხვა.</p>
     <p xml:lang="ko">git 저장소, Nextcloud, 기타 서비스 등 외부 도구로 레시피를 동기화할 수 있습니다.</p>
+    <p xml:lang="lv">Receptes iespējams sinhronizēt ar citiem, izmantojot ārējus rīkus, piemēram, „git“ krātuves, „NextCloud“ un daudzus citus pakalpojumus.</p>
     <p xml:lang="nl">Recepten kunnen gesynchroniseerd worden met andere door externe hulpmiddelen als git-opslagruimten, nextcloud of vele andere services te gebruiken.</p>
     <p xml:lang="nn">Du kan synkronisera oppskriftene med andre via eksterne verktøy, som Git-depot, Nextcloud og andre tenester.</p>
     <p xml:lang="pl">Przepisy można synchronizować z innymi przy użyciu zewnętrznych narzędzi takich jak repozytoria git, nextcloud oraz wiele innych usług.</p>
