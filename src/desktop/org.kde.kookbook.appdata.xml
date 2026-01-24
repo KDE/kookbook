@@ -21,6 +21,7 @@
   <name xml:lang="gl">Kookbook</name>
   <name xml:lang="he">Kookbook</name>
   <name xml:lang="hi">कुकबुक</name>
+  <name xml:lang="ia">Kookbook</name>
   <name xml:lang="id">Kookbook</name>
   <name xml:lang="it">Kookbook</name>
   <name xml:lang="ka">Kookbook</name>
@@ -55,6 +56,7 @@
   <summary xml:lang="gl">Xestor de receitas</summary>
   <summary xml:lang="he">מנהל מתכונים</summary>
   <summary xml:lang="hi">पाक विधि प्रबंधक</summary>
+  <summary xml:lang="ia">Gerente de recepta</summary>
   <summary xml:lang="id">Pengelola resep</summary>
   <summary xml:lang="it">Gestore delle ricette</summary>
   <summary xml:lang="ka">რეცეპტების მმართველი</summary>
@@ -97,6 +99,7 @@
     <p xml:lang="gl">Kookbook é un xestor de receitas simplista que lle axudará a manter a súa colección de receitas favoritas.</p>
     <p xml:lang="he">Kookbook הוא מנהל מתכונים פשוט שיסייע לך לתחזק את אוסף המתכונים האהובים עליך או עלייך.</p>
     <p xml:lang="hi">कुकबुक एक सरल पाक विधि प्रबंधक है, जो आपको अपनी पसंदीदा विधियों को संग्रहित करने में सहायता करता है।</p>
+    <p xml:lang="ia">Kookbook es un simple gerente de receptas que te adjutara a mantener tu collection de receptas favorite.</p>
     <p xml:lang="id">Kookbook adalah pengelola resep sederhana yang akan membantu kamu memelihara koleksi resep favoritmu.</p>
     <p xml:lang="it">Kookbook è un gestore di ricette semplificato che ti aiuterà a mantenere una raccolta delle tue ricette preferite.</p>
     <p xml:lang="ka">Kookbook არის რეცეპტების მარტივი მმართველი, რომელიც დაგეხმარებათ თქვენი საყვარელი რეცეპტების კოლექცია შეინახოთ .</p>
@@ -130,6 +133,7 @@
     <p xml:lang="gl">As receitas poden sincronizarse con outras persoas mediante ferramentas externas como repositorios de Git, NextCloud, ou outros moitos servizos.</p>
     <p xml:lang="he">אפשר לסנכרן מתכונים עם אחרים באמצעות כלים חיצוניים כמו מאגרי git,‏ nextcloud ועוד שלל שירותים נוספים.</p>
     <p xml:lang="hi">पाक विधियाँ अन्य सेवाओं जैसे की नेक्सटक्लाउड, गिट इत्यादि से आयातित हो सकती हैं।</p>
+    <p xml:lang="ia">Receptas pote esser synchronisate con altere per usar instrumentos externe como receptaculos de git, nextcloud o multe altere servicios.</p>
     <p xml:lang="id">Resep bisa disinkronkan dengan yang lain menggunakan alat eksternal seperti git repositories, nextcloud atau banyak layanan lainnya.</p>
     <p xml:lang="it">Le ricette possono essere sincronizzate con altri utilizzando strumenti esterni come repository git, nextcloud o molti altri servizi.</p>
     <p xml:lang="ka">რეცეპტების სინქრონიზაცია შესაძლებელია გარე ხელსაწყოების გამოყენებითაც. მაგ. git რეპოზიტორიები, nextcloud და სხვა.</p>
