@@ -71,11 +71,11 @@ Kirigami.ScrollablePage {
         currentIndex: -1
 
         delegate: Controls.ItemDelegate {
-            text: display
+            text: model.display
             onClicked: {
                 var item = root.pageStack.push(Qt.resolvedUrl("Recipe.qml"))
-                item.path = path;
-                item.title = display
+                item.path = model.path;
+                item.title = model.display
             }
             highlighted: focus && ListView.isCurrentItem
         }
