@@ -39,15 +39,24 @@ MainPane::MainPane(QWidget* parent) : PaneBase(parent)
     auto textView = std::make_unique<QTextBrowser>();
     textView->setReadOnly(true);
     textView->setDocument(m_document.get());
-    textView->setOpenExternalLinks(true);
+    textView->setOpenLinks(false);
     connect(textView.get(), QOverload<const QUrl&>::of(&QTextBrowser::highlighted), this, [this](const QUrl &url) {
         Q_EMIT notifySimple(url.toString());
+    });
+    connect(textView.get(), &QTextBrowser::anchorClicked, this, [this](const QUrl& url){
+        if (url.isRelative()) {
+            openPath(m_rootPath + url.toString());
+        }
     });
 
     m_textView = textView.get();
     layout->addWidget(textView.release());
     setLayout(layout.release());
     openPath(QString());
+}
+
+void MainPane::setRootPath(const QString& rootPath) {
+    m_rootPath = rootPath;
 }
 
 void MainPane::openPath(const QString& path)

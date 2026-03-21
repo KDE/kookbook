@@ -288,5 +288,6 @@ void MainWindow::setCurrentFolder(const QString& folder)
     m_fsPane->setRootPath(folder);
     notifyStatusBar(QString("Parsing %1").arg(folder));
     m_scanner->setRootPath(folder);
+    m_mainPane->setRootPath(folder);
 
 }

@@ -38,6 +38,7 @@ class MainPane : public PaneBase
 public:
     MainPane(QWidget* parent = nullptr) ;
     ~MainPane();
+    void setRootPath(const QString& root);
 Q_SIGNALS:
     /**
      * Requests a simple notification
@@ -56,5 +57,6 @@ public Q_SLOTS:
     void printPreview();
 private:
     std::unique_ptr<QTextDocument> m_document;
+    QString m_rootPath;
     QTextBrowser *m_textView;
 };
