@@ -66,26 +66,39 @@ void MetaDataPane::openPath(const QString& path)
         return;
     }
 
-    m_model->appendRow(new QStandardItem(parsedRecipe.title));
+    auto title = std::make_unique<QStandardItem>(parsedRecipe.title);
+    title->setEditable(false);
+    m_model->appendRow(title.release());
 
     auto ingredients = std::make_unique<QStandardItem>(QString("ingredients (%1)").arg(parsedRecipe.ingredients.size()));
+    ingredients->setEditable(false);
     for(auto ingredient : std::as_const(parsedRecipe.ingredients)) {
-        ingredients->appendRow(new QStandardItem(ingredient.ingredient));
+        auto ing = std::make_unique<QStandardItem>(ingredient.ingredient);
+        ing->setEditable(false);
+        ingredients->appendRow(ing.release());
     }
     m_model->appendRow(ingredients.release());
 
     auto tags  = std::make_unique<QStandardItem>(QString("tags (%1)").arg(parsedRecipe.tags.size()));
+    tags->setEditable(false);
     for(auto tag : std::as_const(parsedRecipe.tags)) {
-        tags->appendRow(new QStandardItem(tag));
+        auto tagItem = std::make_unique<QStandardItem>(tag);
+        tagItem->setEditable(false);
+        tags->appendRow(tagItem.release());
     }
+
     m_model->appendRow(tags.release());
     auto meta = std::make_unique<QStandardItem>(QString("meta (%1)").arg(parsedRecipe.otherMeta.size()));
+    meta->setEditable(false);
     for(auto it = parsedRecipe.otherMeta.constBegin(), end = parsedRecipe.otherMeta.constEnd(); it != end; it++) {
         auto child = std::make_unique<QStandardItem>(it.key());
+        child->setEditable(false);
         const auto values = it.value();
         for(const auto& value : values)
         {
-            child->appendRow(new QStandardItem(value));
+            auto valueItem = std::make_unique<QStandardItem>(value);
+            valueItem->setEditable(false);
+            child->appendRow(valueItem.release());
         }
         meta->appendRow(child.release());
     }

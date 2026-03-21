@@ -85,11 +85,13 @@ void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultT
         auto result = std::make_unique<QStandardItemModel>();
         for(auto it = map.constBegin(),end = map.constEnd(); it!=end; it++) {
             auto line = std::make_unique<QStandardItem>(it.key());
+            line->setEditable(false);
             auto recipes = it.value();
             std::sort(recipes.begin(), recipes.end(), recipePairTitleSorter);
             for(const auto& recipe : std::as_const(recipes)) {
                 auto child = std::make_unique<QStandardItem>(recipe.first);
                 child->setData(recipe.second);
+                child->setEditable(false);
                 line->appendRow(child.release());
             }
             result->appendRow(line.release());
@@ -105,6 +107,7 @@ void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultT
     for(auto title : std::as_const(titles)) {
         titlemap[title.second] = title.first;
         auto line = std::make_unique<QStandardItem>(title.first);
+        line->setEditable(false);
         line->setData(title.second);
         titlelist->appendRow(line.release());
     }
