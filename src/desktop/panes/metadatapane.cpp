@@ -55,7 +55,9 @@ void MetaDataPane::openPath(const QString& path)
     }
 
     QFile f(path);
-    f.open(QIODevice::ReadOnly);
+    if (!f.open(QIODevice::ReadOnly)) {
+        return;
+    }
     auto parsedRecipe = RecipeParser::parseRecipe(&f);
     f.close();
 
@@ -67,13 +69,13 @@ void MetaDataPane::openPath(const QString& path)
     m_model->appendRow(new QStandardItem(parsedRecipe.title));
 
     auto ingredients = std::make_unique<QStandardItem>(QString("ingredients (%1)").arg(parsedRecipe.ingredients.size()));
-    for(auto ingredient : qAsConst(parsedRecipe.ingredients)) {
+    for(auto ingredient : std::as_const(parsedRecipe.ingredients)) {
         ingredients->appendRow(new QStandardItem(ingredient.ingredient));
     }
     m_model->appendRow(ingredients.release());
 
     auto tags  = std::make_unique<QStandardItem>(QString("tags (%1)").arg(parsedRecipe.tags.size()));
-    for(auto tag : qAsConst(parsedRecipe.tags)) {
+    for(auto tag : std::as_const(parsedRecipe.tags)) {
         tags->appendRow(new QStandardItem(tag));
     }
     m_model->appendRow(tags.release());

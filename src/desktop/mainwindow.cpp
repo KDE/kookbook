@@ -61,7 +61,7 @@ static void openFile(const QString& file)
 {
     QStringList exes = {"kwrite", "kate", "gedit", "notepad++", "atom", "gvim"};
     QString foundExe;
-    for(const auto& exe : qAsConst(exes)) {
+    for(const auto& exe : std::as_const(exes)) {
         foundExe = QStandardPaths::findExecutable(exe);
         if (!foundExe.isEmpty()) {
             break;
@@ -171,7 +171,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
         }
 
     }
-    for(auto dock : qAsConst(developerDocks)) {
+    for(auto dock : std::as_const(developerDocks)) {
         dock->hide();
     }
     auto toolbar = addToolBar("Main Toolbar");

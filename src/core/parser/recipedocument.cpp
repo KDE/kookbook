@@ -38,7 +38,7 @@ QString RecipeDocument::openPath(const QString& path)
         data = f.readAll();
     } else {
         QFile f(":/docs/intro.md");
-        f.open(QIODevice::ReadOnly);
+        (void)f.open(QIODevice::ReadOnly);
         data = f.readAll();
     }
 

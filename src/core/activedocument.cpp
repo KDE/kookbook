@@ -59,7 +59,7 @@ void ActiveDocument::openPath(const QString& file)
 
 void ActiveDocument::reload()
 {
-    for(auto listener : qAsConst(m_panes)) {
+    for(auto listener : std::as_const(m_panes)) {
         listener->openPath(m_currentPath);
     }
 }
