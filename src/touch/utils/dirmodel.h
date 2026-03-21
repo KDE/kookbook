@@ -28,7 +28,7 @@
 #include <QAbstractListModel>
 #include <QDir>
 #include <memory>
-#include <QVector>
+#include <QList>
 #include <QFileInfo>
 
 class QSortFilterProxyModel;
@@ -120,5 +120,5 @@ private:
     void refresh();
     QDir m_path;
     DirModel::Mode m_mode;
-    QVector<QFileInfo> m_files;
+    QList<QFileInfo> m_files;
 };

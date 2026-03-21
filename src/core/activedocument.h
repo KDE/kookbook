@@ -24,7 +24,7 @@
  */
 #pragma once
 #include <QObject>
-#include <QVector>
+#include <QList>
 #include <memory>
 
 class QFileSystemWatcher;
@@ -49,7 +49,7 @@ public Q_SLOTS:
     void openPath(const QString& file);
 private:
     QString m_currentPath;
-    QVector<ActiveDocumentListener*> m_panes;
+    QList<ActiveDocumentListener*> m_panes;
     void reload();
     std::unique_ptr<QFileSystemWatcher> m_watcher;
 private Q_SLOTS:

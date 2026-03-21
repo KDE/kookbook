@@ -79,7 +79,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     m_activeDocument = std::make_unique<ActiveDocument>();
     m_scanner = std::make_unique<Scanner>();
     QDockWidget* fsdockptr = nullptr; // we need a handle to be able to tabify with it later.
-    QVector<QDockWidget*> developerDocks; // want to hide them at the end.
+    QList<QDockWidget*> developerDocks; // want to hide them at the end.
     {
         auto mainpane = std::make_unique<MainPane>();
         m_activeDocument->registerListener(mainpane.get());

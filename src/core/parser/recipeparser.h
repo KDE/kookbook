@@ -24,7 +24,7 @@
  */
 #pragma once
 #include "ingredientsextractor.h"
-#include <QVector>
+#include <QList>
 #include <QMap>
 
 class QIODevice;
@@ -42,12 +42,12 @@ namespace RecipeParser
         /** The recipe title*/
         QString title;
         /** A list of ingredients */
-        QVector<IngredientsExtractor::Ingredient> ingredients;
+        QList<IngredientsExtractor::Ingredient> ingredients;
         /** The tags extracted from the metadata*/
-        QVector<QString> tags;
+        QList<QString> tags;
         /** Less formalized bits of metadata. At a more formal point, it might
          deserve to be treated like tags */
-        QMap<QString,QVector<QString>> otherMeta; // we want them ordered
+        QMap<QString,QList<QString>> otherMeta; // we want them ordered
     };
     /**
      * Parses a recipe

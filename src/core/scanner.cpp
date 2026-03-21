@@ -52,9 +52,9 @@ void Scanner::doUpdate()
 void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultThread) {
 
     QDirIterator it(path, QStringList() << "*.recipe.md", QDir::NoDotAndDotDot | QDir::Files, QDirIterator::Subdirectories);
-    QMap<QString, QVector<std::pair<QString,QString>>> tags;
-    QMap<QString, QVector<std::pair<QString,QString>>> ingredients;
-    QVector<std::pair<QString, QString>> titles;
+    QMap<QString, QList<std::pair<QString,QString>>> tags;
+    QMap<QString, QList<std::pair<QString,QString>>> ingredients;
+    QList<std::pair<QString, QString>> titles;
 
     while (it.hasNext()) {
         it.next();
@@ -81,7 +81,7 @@ void Scanner::parseThingsInDifferentThread(const QString& path, QThread* resultT
             return r1.first < r2.first;
         };
 
-    auto buildTreeFromMap = [&recipePairTitleSorter] (QMap<QString, QVector<std::pair<QString,QString>>> map) {
+    auto buildTreeFromMap = [&recipePairTitleSorter] (QMap<QString, QList<std::pair<QString,QString>>> map) {
         auto result = std::make_unique<QStandardItemModel>();
         for(auto it = map.constBegin(),end = map.constEnd(); it!=end; it++) {
             auto line = std::make_unique<QStandardItem>(it.key());
